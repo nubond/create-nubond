@@ -1,0 +1,9 @@
+<div class="row p-1">
+    <div class="col">
+        <p class="mb-0">Hello from <strong>InOut</strong> container!</p>
+        <p class="mb-0"><strong>Input value:</strong> <span nb-value="this.input"></span></p>
+    </div>
+    <div class="col text-end">
+        <button class="outline" nb-event:click="this.eventDispatcher.dispatch('output', ++this.output)">Click me</button>
+    </div>
+</div>

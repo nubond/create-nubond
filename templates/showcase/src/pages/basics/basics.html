@@ -1,0 +1,637 @@
+<!--header-->
+<hgroup>
+    <h2>Basics</h2>
+    <p>Element handling and manipulations</p>
+</hgroup>
+
+<!--nb-value & nb-html-->
+<article>
+    <div class="row">
+        <!--nb-value-->
+        <div class="col border-end" nb-template="@left-right-tile">
+            <span nb-projection="@header">nb-<span class="pico-color-green-500">value</span></span>
+            <span nb-projection="@sub-header">change <a href="https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent" target="_blank">.textContent</a> value</span>
+            <span class="border-bottom-0"
+                  nb-projection="@icons" 
+                  nb-aspect:tooltip="@nb-value, nb-html, nb-switch, nb-container and nb-template can`t be used at the same time on the same element"
+                  nb-template="@warning-icon">
+            </span>
+            <div nb-projection="@content:left">
+                <h5 class="mb-2">Continuous binding</h5>
+                <code class="ps-1">nb-value="this.value"</code>
+                <p nb-value="this.value"></p>
+            </div>
+            <div nb-projection="@content:right">
+                <h5 class="mb-2">Single time binding</h5>
+                <code class="ps-1">nb-value="<span class="pico-color-green-500">#</span>this.value"</code>
+                <p nb-value="#this.value"></p>
+            </div>
+        </div>
+
+        <!--nb-html-->
+        <div class="col" nb-template="@left-right-tile">
+            <span nb-projection="@header">nb-<span class="pico-color-green-500">html</span></span>
+            <span nb-projection="@sub-header">change <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML" target="_blank">.innerHTML</a> value</span>
+            <span nb-projection="@icons">
+                <span class="border-bottom-0"
+                      nb-aspect:tooltip="{text: 'Html is not sanitized, use your favorite sanitizer before binding', placement: 'left'}"
+                      nb-template="@error-icon">
+                </span>
+                <span class="border-bottom-0 ms-1" 
+                      nb-aspect:tooltip="{text: 'nb-value, nb-html, nb-switch, nb-container and nb-template can`t be used at the same time on the same element', placement: 'left'}"
+                      nb-template="@warning-icon">
+                </span>
+            </span>
+            <div nb-projection="@content:left">
+                <h5 class="mb-2">Continuous binding</h5>
+                <code class="ps-1">nb-html="this.html"</code>
+                <p nb-html="this.html"></p>
+            </div>
+            <div nb-projection="@content:right">
+                <h5 class="mb-2">Single time binding</h5>
+                <code class="ps-1">nb-html="<span class="pico-color-green-500">#</span>this.html"</code>
+                <p nb-html="#this.html"></p>
+            </div>
+        </div>
+    </div>
+</article>
+
+<!--nb-style, nb-if & nb-class-->
+<article>
+    <div class="row">
+        <!--nb-style & nb-if-->
+        <div class="col border-end">
+            <!--nb-style-->
+            <div class="row border-bottom">
+                <div class="col" nb-template="@left-right-tile">
+                    <span nb-projection="@header">nb-<span class="pico-color-green-500">style</span></span>
+                    <span nb-projection="@sub-header">change <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style" target="_blank">.style.xxx</a> values</span>
+                    <div nb-projection="@content:left">
+                        <h5 class="mb-2">Continuous binding</h5>
+                        <code class="ps-1">
+                            nb-style="<br/>opacity: this.style.opacity;<br/>color: this.style.color"
+                        </code>
+                        <p nb-style="opacity: this.style.opacity; color: this.style.color">Value</p>
+                    </div>
+                    <div nb-projection="@content:right">
+                        <h5 class="mb-2">Single time binding</h5>
+                        <code class="ps-1">
+                            nb-style="<br/>opacity: <span class="pico-color-green-500">#</span>this.style.opacity;<br/>
+                            color: <span class="pico-color-green-500">#</span>this.style.color"
+                        </code>
+                        <p nb-style="opacity: #this.style.opacity; color: #this.style.color">Value</p>
+                    </div>
+                </div>
+            </div>
+            <!--nb-if-->
+            <div class="row mt-3">
+                <div class="col" nb-template="@left-right-tile">
+                    <span nb-projection="@header">nb-<span class="pico-color-green-500">if</span></span>
+                    <span nb-projection="@sub-header">show or hide element</span>
+                    <div nb-projection="@content:left">
+                        <h5 class="mb-2">Continuous binding</h5>
+                        <code class="ps-1">nb-if="this.if"</code>
+                        <p nb-if="this.if">Value</p>
+                    </div>
+                    <div nb-projection="@content:right">
+                        <h5 class="mb-2">Single time binding</h5>
+                        <code class="ps-1">nb-if="<span class="pico-color-green-500">#</span>this.if"</code>
+                        <p nb-if="#this.if">Value</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--nb-class-->
+        <div class="col" nb-template="@mono-slot-tile">
+            <span nb-projection="@header">nb-<span class="pico-color-green-500">class</span></span>
+            <span nb-projection="@sub-header">change <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/classList" target="_blank">.classList</a> values</span>
+            <div nb-projection="@content">
+                <h4>Simple Class Expression</h4>
+                <div class="row">
+                    <div class="col">
+                        <h5 class="mb-2">Continuous binding</h5>
+                        <code class="ps-1">nb-class="this.class.simple"</code>
+                        <p nb-class="this.class.simple">Value</p>
+                    </div>
+                    <div class="col">
+                        <h5 class="mb-2">Single time binding</h5>
+                        <code class="ps-1">
+                            nb-class="<span class="pico-color-green-500">#</span>this.class.simple"
+                        </code>
+                        <p nb-class="#this.class.simple">Value</p>
+                    </div>
+                </div>
+                
+                <hr class="mt-2 mb-2"/>
+
+                <h4>Conditional Class Expression</h4>
+                <div class="row">
+                    <div class="col">
+                        <h5 class="mb-2">Continuous binding</h5>
+                        <code class="ps-1">
+                            nb-class="<br/>{pico-color-indigo-500: this.class.condition1;<br/>
+                            pico-color-fuchsia-500: this.class.condition2}"
+                        </code>
+                        <p nb-class="{pico-color-indigo-500: this.class.condition1; pico-color-fuchsia-500: this.class.condition2}">Value</p>
+                    </div>
+                    <div class="col">
+                        <h5 class="mb-2">Single time binding</h5>
+                        <code class="ps-1">
+                            nb-class="<br/>{pico-color-indigo-500: <span class="pico-color-green-500">#</span>this.class.condition1;<br/>
+                            pico-color-fuchsia-500: <span class="pico-color-green-500">#</span>this.class.condition2}"
+                        </code>
+                        <p nb-class="{pico-color-indigo-500: #this.class.condition1; pico-color-fuchsia-500: #this.class.condition2}">Value</p>
+                    </div>
+                </div>
+
+                <hr class="mt-2 mb-2" />
+
+                <h4>Array Class Expression</h4>
+                <div class="row">
+                    <div class="col">
+                        <h5 class="mb-2">Continuous binding</h5>
+                        <code class="ps-1">
+                            nb-class="[<br/>this.class.array1;<br/>this.class.array2]"
+                        </code>
+                        <p nb-class="[this.class.array1; this.class.array2]">Value</p>
+                    </div>
+                    <div class="col">
+                        <h5 class="mb-2">Single time binding</h5>
+                        <code class="ps-1">
+                            nb-class="[<br/>this.class.array1;<br/>
+                            <span class="pico-color-green-500">#</span>this.class.array2]"
+                        </code>
+                        <p nb-class="[this.class.array1; #this.class.array2]">Value</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</article>
+
+<!--nb-attr & nb-prop-->
+<article>
+    <div class="row">
+        <!--nb-attr-->
+        <div class="col border-end" nb-template="@left-right-tile">
+            <span nb-projection="@header">nb-<span class="pico-color-green-500">attr</span></span>
+            <span nb-projection="@sub-header">change <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/attributes" target="_blank">.attributes</a> values</span>
+            <span class="border-bottom-0"
+                  nb-projection="@icons" 
+                  nb-aspect:tooltip="@Add multiple nb-attr:xxx to change multiple attributes"
+                  nb-template="@info-icon">
+            </span>
+            <div nb-projection="@content:left">
+                <h5 class="mb-2">Continuous binding</h5>
+                <code class="ps-1">nb-attr:disabled="this.attr"</code>
+                <label for="checkbox-3">
+                    <input type="checkbox" id="checkbox-3" name="checkbox-3" nb-attr:disabled="this.attr" checked>
+                    Checkbox
+                </label>
+            </div>
+            <div nb-projection="@content:right">
+                <h5 class="mb-2">Single time binding</h5>
+                <code class="ps-1">nb-attr:disabled="<span class="pico-color-green-500">#</span>this.attr"</code>
+                <label for="checkbox-4">
+                    <input type="checkbox" id="checkbox-4" name="checkbox-4" nb-attr:disabled="#this.attr" checked>
+                    Checkbox
+                </label>
+            </div>
+        </div>
+
+        <!--nb-prop-->
+        <div class="col" nb-template="@left-right-tile">
+            <span nb-projection="@header">nb-<span class="pico-color-green-500">prop</span></span>
+            <span nb-projection="@sub-header">change <span nb-aspect:tooltip="@Any element property except handled by nuBond">.xxx</span> properties value</span>
+            <span class="border-bottom-0" 
+                  nb-projection="@icons"
+                  nb-aspect:tooltip="{text: 'Add multiple nb-prop:xxx to change multiple properties', placement: 'left'}"
+                  nb-template="@info-icon">
+            </span>
+            <div nb-projection="@content:left">
+                <h5 class="mb-2">Continuous binding</h5>
+                <code class="ps-1">nb-prop:checked="this.prop"</code>
+                <label for="checkbox-1">
+                    <input type="checkbox" id="checkbox-1" name="checkbox-1" nb-prop:checked="this.prop">
+                    Checkbox
+                </label>
+            </div>
+            <div nb-projection="@content:right">
+                <h5 class="mb-2">Single time binding</h5>
+                <code class="ps-1">nb-prop:checked="<span class="pico-color-green-500">#</span>this.prop"</code>
+                <label for="checkbox-2">
+                    <input type="checkbox" id="checkbox-2" name="checkbox-2" nb-prop:checked="#this.prop">
+                    Checkbox
+                </label>
+            </div>
+        </div>
+    </div>
+</article>
+
+<!--nb-switch & nb-repeat-->
+<article>
+    <div class="row">
+        <!--nb-switch-->
+        <div class="col border-end" nb-template="@left-right-tile">
+            <span nb-projection="@header">nb-<span class="pico-color-green-500">switch</span></span>
+            <span nb-projection="@sub-header">switch elements</span>
+            <span class="border-bottom-0"
+                  nb-projection="@icons" 
+                  nb-aspect:tooltip="@nb-value, nb-html, nb-switch, nb-container and nb-template can`t be used at the same time on the same element"
+                  nb-template="@warning-icon">
+            </span>
+            <div nb-projection="@content:left">
+                <h5 class="mb-2">Continuous binding</h5>
+                <code class="ps-1 pe-0">
+                    nb-switch="this.switch"<br/><br/>
+                    switch cases:<br/>
+                    &lt;span nb-<span class="pico-color-green-500">case</span>="@one"&gt;One&lt;/span&gt;<br/>
+                    &lt;span nb-<span class="pico-color-green-500">case</span>="@two"&gt;Two&lt;/span&gt;<br/>
+                    &lt;span nb-<span class="pico-color-green-500">default</span>&gt;Default&lt;/span&gt;
+                </code>
+                <p nb-switch="this.switch">
+                    <span nb-case="@one">One</span>
+                    <span nb-case="@two">Two</span>
+                    <span nb-default>Default</span>
+                </p>
+            </div>
+            <div nb-projection="@content:right">
+                <h5 class="mb-2">Single time binding</h5>
+                <code class="ps-1 pe-0">
+                    nb-switch="<span class="pico-color-green-500">#</span>this.switch"<br/><br/>
+                    switch cases:<br/>
+                    &lt;span nb-<span class="pico-color-green-500">case</span>="@one"&gt;One&lt;/span&gt;<br/>
+                    &lt;span nb-<span class="pico-color-green-500">case</span>="@two"&gt;Two&lt;/span&gt;<br/>
+                    &lt;span nb-<span class="pico-color-green-500">default</span>&gt;Default&lt;/span&gt;
+                </code>
+                <p nb-switch="#this.switch">
+                    <span nb-case="@one">One</span>
+                    <span nb-case="@two">Two</span>
+                    <span nb-default>Default</span>
+                </p>
+            </div>
+        </div>
+
+        <!--nb-repeat-->
+        <div class="col" nb-template="@mono-slot-tile">
+            <span nb-projection="@header">nb-<span class="pico-color-green-500">repeat</span></span>
+            <span nb-projection="@sub-header">repeat element</span>
+            <span class="border-bottom-0" 
+                  nb-projection="@icons"
+                  nb-aspect:tooltip="{text: 'Repeat is working with arrays, array-like objects, strings, objects (will repeat through properties) and numbers (how many times to repeat)', placement: 'left'}"
+                  nb-template="@info-icon">
+            </span>
+            <div nb-projection="@content">
+                <!--Default-->
+                <h4>Default</h4>
+                <div class="row">
+                    <div class="col">
+                        <h5 class="mb-2">Continuous binding</h5>
+                        <code class="ps-1">nb-repeat="this.repeat"</code>
+                        <p nb-repeat="this.repeat" nb-value="`index: ${index}, value: ${item}, count: ${count}`"></p>
+                    </div>
+                    <div class="col">
+                        <h5 class="mb-2">Single time binding</h5>
+                        <code class="ps-1">nb-repeat="<span class="pico-color-green-500">#</span>this.repeat"</code>
+                        <p nb-repeat="#this.repeat" nb-value="`index: ${index}, value: ${item}, count: ${count}`"></p>
+                    </div>
+                </div>
+
+                <hr class="mt-3 mb-2" />
+
+                <!--Named-->
+                <h4>Named</h4>
+                <div class="row">
+                    <div class="col">
+                        <h5 class="mb-2">Continuous binding</h5>
+                        <code class="ps-1 pe-0">
+                            nb-repeat:<span class="pico-color-green-500">outer</span>="this.outrRpt"<br/>
+                            nb-repeat:<span class="pico-color-green-500">inner</span>="this.repeat"
+                        </code>
+                        <p nb-repeat:outer="this.outrRpt">
+                            <span nb-repeat:inner="this.repeat">
+                                <span nb-value="`outer index: ${outerIndex}, inner index: ${innerIndex}`"></span><br/>
+                                <span nb-value="`outer value: ${outerItem}, inner value: ${innerItem}`"></span><br/>
+                                <span nb-value="`outer count: ${outerCount}, inner count: ${innerCount}`"></span><br/><br/>
+                            </span>
+                        </p>
+                    </div>
+                    <div class="col">
+                        <h5 class="mb-2">Single time binding</h5>
+                        <code class="ps-1 pe-0">
+                            nb-repeat:<span class="pico-color-green-500">outer</span>="<span class="pico-color-green-500">#</span>this.outrRpt"<br/>
+                            nb-repeat:<span class="pico-color-green-500">inner</span>="<span class="pico-color-green-500">#</span>this.repeat"
+                        </code>
+                        <p nb-repeat:outer="#this.outrRpt">
+                            <span nb-repeat:inner="#this.repeat">
+                                <span nb-value="#`outer index: ${outerIndex}, inner index: ${innerIndex}`"></span><br/>
+                                <span nb-value="#`outer value: ${outerItem}, inner value: ${innerItem}`"></span><br/>
+                                <span nb-value="#`outer count: ${outerCount}, inner count: ${innerCount}`"></span><br/><br/>
+                            </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</article>
+
+<!--nb-event & nb-exec-->
+<article>
+    <div class="row">
+        <!--nb-event-->
+        <div class="col border-end" nb-template="@mono-slot-tile">
+            <span nb-projection="@header">nb-<span class="pico-color-green-500">event</span></span>
+            <span nb-projection="@sub-header">subscribe to <span nb-aspect:tooltip="@Any element event(s)">event(s)</span></span>
+            <span class="border-bottom-0"
+                  nb-projection="@icons" 
+                  nb-aspect:tooltip="@Add multiple nb-event:xxx to subscribe to multiple events"
+                  nb-template="@info-icon">
+            </span>
+            <div nb-projection="@content">
+                <!--subscriptions-->
+                <h4>Subscriptions</h4>
+                <div class="row">
+                    <div class="col">
+                        <h5 class="mb-2">Single subscription</h5>
+                        <code class="ps-1">
+                            nb-event:click=<br/>"this.eventClick(event)"<br/><br/><br/><br/><br/>
+                        </code>
+                        <button class="outline" nb-event:click="this.eventClick(event)">
+                            <span nb-value="`Click count: ${this.event.click1Count}`"></span>
+                        </button>
+                    </div>
+                    <div class="col">
+                        <h5 class="mb-2">Multiple subscriptions</h5>
+                        <code class="ps-1">
+                            nb-event:mouseover=<br/>"element.styles.set('color', '#D9269D')"<br/>
+                            nb-event:mouseout=<br/>"element.styles.set('color', null)"
+                        </code>
+                        <button class="outline" nb-event:mouseover="element.styles.set('color', '#D9269D')" 
+                                                nb-event:mouseout="element.styles.set('color', null)">Button mouseover</button>
+                    </div>
+                </div>
+
+                <hr class="mt-3 mb-2" />
+
+                <!--UnSubscriptions-->
+                <h4>UnSubscriptions</h4>
+                <div class="row">
+                    <div class="col">
+                        <h5 class="mb-2">Manual</h5>
+                        <code class="ps-1">
+                            nb-event:click=<br/>"this.event.otClick1Count++,<br/>
+                            <span class="pico-color-green-500">unSubscribe()"</span>
+                        </code>
+                        <button class="outline" nb-event:click="this.event.otClick1Count++, unSubscribe()">
+                            <span nb-value="`Click count: ${this.event.otClick1Count}`"></span>
+                        </button>
+                    </div>
+                    <div class="col">
+                        <h5 class="mb-2">Automatic</h5>
+                        <code class="ps-1">
+                            nb-event:click=<br/>
+                            "<span class="pico-color-green-500">#</span>this.event.otClick2Count++"<br/><br/>
+                        </code>
+                        <button class="outline" nb-event:click="#this.event.otClick2Count++">
+                            <span nb-value="`Click count: ${this.event.otClick2Count}`"></span>
+                        </button>
+                    </div>
+                </div>
+
+                <hr class="mt-3 mb-2" />
+
+                <!--Change detection-->
+                <h4>Change detection</h4>
+                <div class="row">
+                    <div class="col">
+                        <h5 class="mb-2">Automatic change detection<br/><br/></h5>
+                        <code class="ps-1 pe-0">
+                            nb-event:click=<br/>"this.event.click2Count++"<br/><br/><br/><br/><br/><br/><br/><br/><br/>
+                        </code>
+                        <button class="outline" nb-event:click="this.event.click2Count++">
+                            <span nb-value="`Click count: ${this.event.click2Count}`"></span>
+                        </button>
+                    </div>
+                    <div class="col">
+                        <h5 class="mb-2">Automatic change detection<br/>for <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" target="_blank">Promises</a></h5>
+                        <code class="ps-1 pe-0">
+                            nb-event:click=<br/>"this.eventWithPromise()"<br/><br/>
+                            public eventWithPromise() {<br/>
+                            &nbsp;<span class="pico-color-green-500">return</span>&nbsp;this.getPromise()<br/>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="pico-color-green-500">.then</span>(data&nbsp;=><br/>
+                            this.event<br/>
+                            &nbsp;&nbsp;&nbsp;&nbsp;.dataFromPromise&nbsp;=<br/>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data.toString());<br/>
+                            }
+                        </code>
+                        <div class="d-flex align-items-center">
+                            <button class="outline" nb-event:click="this.eventWithPromise()">Trigger promise</button>
+                            <span class="ms-3" nb-value="this.event.dataFromPromise ? `Data: ${this.event.dataFromPromise}` : ''"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="mt-3 mb-2" />
+
+                <!--Event debouncing-->
+                <h4>Event debouncing</h4>
+                <div class="row">
+                    <div class="col">
+                        <h5 class="mb-2">Debouncing event handler callback invoke</h5>
+                        <code class="ps-1">
+                            nb-event:mouseover<span class="pico-color-green-500">:150</span>="element.styles.set('color', '#D9269D')"<br/>
+                            nb-event:mouseout<span class="pico-color-green-500">:150</span>="element.styles.set('color', null)"
+                        </code>
+                        <button class="outline" nb-event:mouseover:150="element.styles.set('color', '#D9269D')" 
+                                                nb-event:mouseout:150="element.styles.set('color', null)">Button mouseover</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--nb-exe & nb-bound-->
+        <div class="col">
+            <!--nb-exec-->
+            <div class="row border-bottom">
+                <div class="col" nb-template="@left-right-tile">
+                    <span nb-projection="@header">nb-<span class="pico-color-green-500">exec</span></span>
+                    <span nb-projection="@sub-header">execute expression on change detection</span>
+                    <div nb-projection="@content:left">
+                        <h5 class="mb-2">Continuous binding</h5>
+                        <code class="ps-1">nb-exec="this.exec.count++"</code>
+                        <p nb-exec="this.exec.count++"
+                           nb-value="`Executed times: ${this.exec.count}`"></p>
+                    </div>
+                    <div nb-projection="@content:right">
+                        <h5 class="mb-2">Single time binding</h5>
+                        <code class="ps-1">nb-exec="<span class="pico-color-green-500">#</span>this.exec.count2++"</code>
+                        <p nb-exec="#this.exec.count2++" nb-value="`Executed times: ${this.exec.count2}`">Value</p>
+                    </div>
+                </div>
+            </div>
+            <!--nb-bound-->
+            <div class="mt-3" nb-template="@mono-slot-tile">
+                <span nb-projection="@header">nb-<span class="pico-color-green-500">bound</span></span>
+                <span nb-projection="@sub-header">execute expression when bound</span>
+                <div nb-projection="@content">
+                    <h5 class="mb-2">Executed only once</h5>
+                    <code class="ps-1">nb-bound="this.boundElement = nativeElement"</code>
+                    <p nb-bound="this.boundElement = nativeElement" nb-value="`Bound to: ${this.boundElement.tagName} element`"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</article>
+
+<hr />
+
+<!--app root decorator-->
+<article nb-template="@mono-slot-tile">
+    <span class="pico-color-green-500" nb-projection="@header">@AppRoot</span>
+    <span nb-projection="@sub-header">application entry point decorator</span>
+    <div nb-projection="@content">
+        <code class="ps-1">
+            function AppRoot<T extends IContextConstructor>(...appBootstrapMetaData: Array&lt;string | Element | IContextConfig | IGlobalConfig | IEntityDependencyConstructor&gt;) {<br/>}
+        </code>
+        Parameters:<br/>
+        <strong>...appBootstrapMetaData: Array&lt;string | Element | IContextConfig | IGlobalConfig | IEntityDependencyConstructor&gt;</strong><br/>
+        • <strong>string</strong>: app root element selector<br/>
+        <em>Example:</em>
+        <code class="ps-1">
+            'body'
+        </code>
+        • <strong>string</strong>: app route template<br/>
+        <em>Example:</em>
+        <code class="ps-1">
+            '/#[tab=basics]'
+        </code>
+        • <strong>Element</strong>: app root element<br/>
+        <em>Example:</em>
+        <code class="ps-1">
+            document.body
+        </code>
+        • <strong>IContextConfig</strong>: root context (decorated class) configuration<br/>
+        <em>IContextConfig interface:</em>
+        <code class="ps-1">
+            interface IContextConfig {<br/>
+            &nbsp;&nbsp;<span class="pico-color-green-700">//context-specific change detection strategy. By default global change detection strategy value will be used, if configured. Default value: false.</span><br/>
+            &nbsp;&nbsp;<strong>pessimisticChangeDetectionStrategy</strong>?: boolean;<br/>
+
+            &nbsp;&nbsp;<span class="pico-color-green-700">//context-specific htmlSanitizer. By default global htmlSanitizer value will be used, if configured</span><br/>
+            &nbsp;&nbsp;<strong>htmlSanitizer</strong>?: (html: string) => string;<br/>
+            }
+        </code>
+        <em>Example:</em>
+        <code class="ps-1">
+            {<br/>
+            &nbsp;&nbsp;pessimisticChangeDetectionStrategy: true,<br/>
+            &nbsp;&nbsp;htmlSanitizer: html => html<br/>
+            }
+        </code>
+        • <strong>IGlobalConfig</strong>: global configuration<br/>
+        <em>IGlobalConfig interface:</em>
+        <code class="ps-1">
+            interface IGlobalConfig {<br/>
+            &nbsp;&nbsp;<span class="pico-color-green-700">//Show debug info or not. Default value: false.</span><br/>
+            &nbsp;&nbsp;<strong>showDebugInfo</strong>?: boolean;<br/>
+            
+            &nbsp;&nbsp;<span class="pico-color-green-700">//If true all nuBond attributes should start from data-xxx prefix and use '-' instead of ':' in handler like nb-event:xxx, nb-attr:xxx, nb-prop:xxx, nb-aspect:xxx. Default value: false.</span><br/>
+            &nbsp;&nbsp;<strong>complyWithW3C</strong>?: boolean;<br/>
+
+            &nbsp;&nbsp;<span class="pico-color-green-700">//Default global change detection strategy value. Default value: false.</span><br/>
+            &nbsp;&nbsp;<strong>pessimisticChangeDetectionStrategy</strong>?: boolean;<br/>
+
+            &nbsp;&nbsp;<span class="pico-color-green-700">//Default global htmlSanitizer value. Default value: undefined.</span><br/>
+            &nbsp;&nbsp;<strong>htmlSanitizer</strong>?: (html: string) => string;<br/>
+
+            &nbsp;&nbsp;<span class="pico-color-green-700">//Default global styleSanitizer value. Default value: undefined.</span><br/>
+            &nbsp;&nbsp;<strong>styleSanitizer</strong>?: (style: string) => string;<br/>
+            }
+        </code>
+        <em>Example:</em>
+        <code class="ps-1">
+            {<br/>
+            &nbsp;&nbsp;showDebugInfo: true,<br/>
+            &nbsp;&nbsp;complyWithW3C: true,<br/>
+            &nbsp;&nbsp;pessimisticChangeDetectionStrategy: true,<br/>
+            &nbsp;&nbsp;htmlSanitizer: html => html,<br/>
+            &nbsp;&nbsp;styleSanitizer: style => style,<br/>
+            }
+        </code>
+        • <strong>Array&lt;string&gt;</strong>: $Template or $AdoptedStyle registration<br/>
+        <em>Example:</em>
+        <code class="ps-1">
+            [$Template('my-template', html), $AdoptedStyle('my-style', style)]
+        </code>
+        • <strong>IEntityDependencyConstructor</strong>: dependencies (containers, components, aspects, transformers or injectables) used globally or in application root<br/>
+        <em>IEntityDependencyConstructor type:</em>
+        <code class="ps-1">
+            IContextConstructor | IComponentContextConstructor |<br/>
+            IAspectContextConstructor | ITransformerContextConstructor | IInjectableConstructor
+        </code>
+    </div>
+</article>
+
+<!--app root context-->
+<article nb-template="@mono-slot-tile">
+    <span class="pico-color-green-500" nb-projection="@header">IContext</span>
+    <span nb-projection="@sub-header">app root context interface</span>
+    <div nb-projection="@content">
+        <em>IContext interface:</em>
+        <code class="ps-1">
+            interface IContext {<br/>
+            &nbsp;&nbsp;<span class="pico-color-green-700">//Invoked when container is attached</span><br/>
+            &nbsp;&nbsp;<strong>onContainerAttached</strong>?: (context: IContext) => void;<br/>
+
+            &nbsp;&nbsp;<span class="pico-color-green-700">//Invoked when container is detached</span><br/>
+            &nbsp;&nbsp;<strong>onContainerDetached</strong>?: (context: IContext) => void;<br/>
+
+            &nbsp;&nbsp;<span class="pico-color-green-700">//Invoked when all inputs are refreshed</span><br/>
+            &nbsp;&nbsp;<strong>onInputsRefreshDone</strong>?: () => void;<br/>
+
+            &nbsp;&nbsp;<span class="pico-color-green-700">//Invoked when change detection is completed</span><br/>
+            &nbsp;&nbsp;<strong>onDetectChangesDone</strong>?: () => void;<br/>
+
+            &nbsp;&nbsp;<span class="pico-color-green-700">//Invoked when context is disposed</span><br/>
+            &nbsp;&nbsp;<strong>onDispose</strong>?: () => void;<br/>
+            }
+        </code>
+        <em>Example:</em>
+        <code class="ps-1">
+            @AppRoot()<br/>
+            export class Root {<br/>
+            &nbsp;&nbsp;public onDispose(): void {<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;console.log('Root disposed');<br/>
+            &nbsp;&nbsp;}<br/>
+            }
+        </code>
+    </div>
+</article>
+
+<hr />
+
+<!--app root decorator-->
+<article nb-template="@mono-slot-tile">
+    <span class="pico-color-green-500" nb-projection="@header">@AppRoot</span>
+    <span nb-projection="@sub-header">multi-app-roots</span>
+    <div nb-projection="@content">
+        By design, there should be only one application root.<br/>
+        To simplify migration, nuBond supports a multiple-app-roots mode,<br/>
+        so that a page can be broken down into smaller chunks.<br/>
+        When nuBond is used in multiple-app-root mode, all registered entities are shared between all app roots.<br/>
+        When nuBond is used in multiple-app-root mode, global configuration and routing configuration must be set before any app root is registered.<br/>
+        This can be done using:<br/>
+        <code class="ps-1">
+            function $Config(config: IGlobalConfig) {<br/>}
+        </code>
+        Parameters:<br/>
+        • <strong>config: IGlobalConfig</strong>: global configuration
+        <hr class="mt-3 mb-2"/>
+        <code class="ps-1">
+            function $Route(routeConfig: string) {<br/>}
+        </code>
+        Parameters:<br/>
+        • <strong>routeConfig: string</strong>: route configuration<br/>
+    </div>
+</article>

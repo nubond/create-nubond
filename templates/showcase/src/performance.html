@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html data-theme="dark">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <title>nuBond Performance</title>
+
+        <link rel="stylesheet" href="ref:npm:@picocss/pico/css/pico.min.css">
+        <link rel="stylesheet" href="ref:npm:@picocss/pico/css/pico.colors.min.css">
+        <link rel="stylesheet" href="ref:npm:bootstrap/dist/css/bootstrap-utilities.min.css">
+
+        <link rel="stylesheet" href="./index.scss" />
+
+        <script type="module" src="./index.ts"></script>
+    </head>
+    <body class="container">
+        <header class="border-bottom border-dark pb-0 pt-0 sticky-top">
+            <nav>
+                <ul>
+                    <li><strong>nuBond <span class="pico-color-red-500">Performance</span></strong></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <article>
+                <div nb-repeat="this.repeat" nb-value="item"></div>
+            </article>
+        </main>
+    </body>
+</html>

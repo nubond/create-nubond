@@ -1,0 +1,64 @@
+:host {
+  --background-color: rgba(230, 230, 230, 0.9);
+  --color: rgba(0, 0, 0, 0.2);
+  --direction: right;
+
+  display: block;
+  height: 1px;
+  width: 75%;
+  margin-left: auto;
+  margin-top: var(--xs);
+  margin-right: auto;
+  margin-bottom: var(--xs);
+  background-color: var(--background-color);
+  background-image: linear-gradient(var(--color));
+
+  @media (prefers-color-scheme: dark) {
+    --background-color: rgba(20, 20, 20, 0.9);
+    --color: rgba(255, 255, 255, 0.2);
+  }
+}
+
+:host([appearance="sharp"]) {
+  background-image: linear-gradient(to var(--direction), transparent, var(--color), var(--color), var(--color), transparent);
+}
+
+:host([size="large"]) {
+  font-size: large;
+}
+:host([no-left]) {
+  margin-left: 0;
+}
+:host([no-top]) {
+  margin-top: 0;
+}
+:host([no-right]) {
+  margin-right: 0;
+}
+:host([no-bottom]) {
+  margin-bottom: 0;
+}
+
+:host([alignment="vertical"]) {
+  --direction: bottom;
+
+  height: 75%;
+  width: 1px;
+  margin-left: var(--xs);
+  margin-top: auto;
+  margin-right: var(--xs);
+  margin-bottom: auto;
+}
+
+:host([size="small"][alignment="vertical"]) {
+  height: 50%;
+}
+:host([size="small"]:not([alignment="vertical"])) {
+  height: 50%;
+}
+:host([size="large"][alignment="vertical"]) {
+  height: 100%;
+}
+:host([size="large"]:not([alignment="vertical"])) {
+  width: 100%;
+}

@@ -1,0 +1,256 @@
+<!--header-->
+<hgroup>
+    <h2>Containers</h2>
+    <p>Swappable HTML templates with context</p>
+</hgroup>
+
+<!--description-->
+<article class="d-flex align-items-center pico-background-cyan-500">
+    <span nb-template="@bulb-icon"></span>
+    <div class="ms-3">
+        <p class="mb-0">• Designed to be used as containers for HTML templates and components</p>
+        <p class="mb-0">• Automatic change detection happens <u>only</u> when input params change</p>
+        <p class="mb-0">• Have <u>no dedicated styles</u> — they reuse page styles</p>
+        <p class="mb-0">• An application page or a complex tab is a good use case for a container</p>
+    </div>
+</article>
+
+<!--nb-container & containers in & out-->
+<article>
+    <div class="row">
+        <!--nb-container-->
+        <div class="col border-end" nb-template="@left-right-tile">
+            <span nb-projection="@header">nb-<span class="pico-color-green-500">container</span></span>
+            <span nb-projection="@sub-header">HTML template with context</span>
+            <span nb-projection="@icons">
+                <span class="border-bottom-0"
+                      nb-aspect:tooltip="@HTML is not sanitized when ITemplateProvider is used — apply your favorite sanitizer"
+                      nb-template="@error-icon">
+                </span>
+                <span class="border-bottom-0 ms-1" 
+                      nb-aspect:tooltip="@nb-value, nb-html, nb-switch, nb-container and nb-template can`t be used at the same time on the same element"
+                      nb-template="@warning-icon">
+                </span>
+            </span>
+            <div nb-projection="@content:left">
+                <h5 class="mb-2">Continuous binding</h5>
+                <code class="ps-1">nb-container="this.contType"</code>
+                <p class="border border-secondary" nb-container="this.contType"></p>
+            </div>
+            <div nb-projection="@content:right">
+                <h5 class="mb-2">Single time binding</h5>
+                <code class="ps-1">
+                    nb-container="<span class="pico-color-green-500">#</span>this.contType"
+                </code>
+                <p class="border border-secondary" nb-container="#this.contType"></p>
+            </div>
+        </div>
+        <!--nb-container in & out-->
+        <div class="col">
+            <!--nb-container in & out-->
+            <div class="row">
+                <div class="col" nb-template="@mono-slot-tile">
+                    <span nb-projection="@header"><span class="pico-color-green-500">in</span> & <span class="pico-color-green-500">out</span></span>
+                    <span nb-projection="@sub-header">input & output bindings</span>
+                    <span nb-projection="@icons">
+                        <span class="border-bottom-0" 
+                            nb-aspect:tooltip="{text: 'Container change detection will be triggered automatically only when input parameters (nb-in:xxx) values are changed', placement: 'left'}"
+                            nb-template="@warning-icon">
+                        </span>
+                    </span>
+                    <div nb-projection="@content">
+                        <h5 class="mb-2">Continuous binding</h5>
+                        <code class="ps-1">
+                            nb-container="@InOut"<br/>
+                            nb-in:input="this.inOutContainerInput"<br/>
+                            nb-event:output="this.inOutContainerOutput = data"
+                        </code>
+                        <p class="border border-secondary mb-2" nb-container="@InOut" 
+                                                                nb-in:input="this.inOutContainerInput" 
+                                                                nb-event:output="this.inOutContainerOutput = data"></p>
+                        <p>Clicks inside container: <span nb-value="this.inOutContainerOutput"></span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</article>
+
+<!--nb-container projections-->
+<article nb-template="@mono-slot-tile">
+    <span nb-projection="@header">nb-<span class="pico-color-green-500">projection</span>&nbsp;&&nbsp;(nb-<span class="pico-color-green-500">project-to</span>&nbsp;/&nbsp;nb-<span class="pico-color-green-500">project-instead</span>)</span>
+    <span nb-projection="@sub-header">projections</span>
+    <div class="row" nb-projection="@content">
+        <!--fallback projection-->
+        <div class="col">
+            <h5 class="mb-2">Fallback projection</h5>
+            <code class="ps-1">
+                If the container is not found, content that is not a projection inside the container tag is displayed
+            </code>
+            <div class="border border-secondary" nb-container="@UnknownContainer">
+                Container with this name is <strong>not found</strong>
+                <em nb-projection>This projection is skipped</em>
+                <em nb-projection="@slot1">And this projection is skipped</em>
+            </div>
+        </div>
+        <!--default projection-->
+        <div class="col">
+            <h5 class="mb-2">Default projection</h5>
+            <code class="ps-1">
+                <strong>Container declaration</strong><br/>
+                &lt;div nb-container="@DefaultProjection"&gt;<br/>
+                    &nbsp;&lt;em <span class="pico-color-green-500">nb-projection</span>&gt;<br/>
+                    &nbsp;&nbsp;&nbsp;Element is projected in container<br/>
+                    &nbsp;&lt;/em&gt;<br/>
+                &lt;/div&gt;<br/><br/>
+                <strong>Container template</strong><br/>
+                &lt;p <span class="pico-color-green-500">nb-project-to</span>&gt;&lt;/p&gt;
+            </code>
+            <div class="border border-secondary" nb-container="@DefaultProjection">
+                <em nb-projection>Element is projected in container</em>
+            </div>
+        </div>
+        <!--multi-slot projection-->
+        <div class="col">
+            <h5 class="mb-2">Multi-slot projection</h5>
+            <code class="ps-1">
+                <strong>Container declaration</strong><br/>
+                &lt;div nb-container="@MultiSlotProjection"&gt;<br/>
+                    &nbsp;&lt;em <span class="pico-color-green-500">nb-projection="@slot1"</span>&gt;<br/>
+                    &nbsp;&nbsp;&nbsp;Element is projected to container's slot 1<br/>
+                    &nbsp;&lt;/em&gt;<br/>
+                    &nbsp;&lt;em <span class="pico-color-green-500">nb-projection="@slot2"</span>&gt;<br/>
+                    &nbsp;&nbsp;&nbsp;Element is projected instead of container's slot 2<br/>
+                    &nbsp;&lt;/em&gt;<br/>
+                &lt;/div&gt;<br/><br/>
+                <strong>Container template</strong><br/>
+                &lt;p <span class="pico-color-green-500">nb-project-to="@slot1"</span>&gt;&lt;/p&gt;<br/>
+                &lt;p <span class="pico-color-green-500">nb-project-instead="@slot2"</span>&gt;&lt;/p&gt;
+            </code>
+            <div class="border border-secondary" nb-container="@MultiSlotProjection">
+                <em nb-projection="@slot1">Element is projected to container's slot 1</em>
+                <em nb-projection="@slot2">Element is projected instead of container's slot 2</em>
+            </div>
+        </div>
+    </div>
+</article>
+
+<hr />
+
+<!--container decorator-->
+<article nb-template="@mono-slot-tile">
+    <span class="pico-color-green-500" nb-projection="@header">@Container</span>
+    <span nb-projection="@sub-header">container decorator</span>
+    <div nb-projection="@content">
+        <code class="ps-1">
+            function Container<T extends IContextConstructor>(htmlTemplateOrPathOrProviderWithOrWithoutName: string | ITemplateProvider | [string, string | ITemplateProvider],<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;
+            ...containerBootstrapMetaData: Array&lt;IContextConfig | IEntityDependencyConstructor&gt;) {<br/>}
+        </code>
+        Parameters:<br/>
+        <strong>htmlTemplateOrPathOrProviderWithOrWithoutName: string | ITemplateProvider | [string, string | ITemplateProvider]</strong><br/>
+        • <strong>string</strong>: path to HTML template<br/>
+        <em>Example:</em>
+        <code class="ps-1">
+            '/src/page.html'
+        </code>
+        • <strong>ITemplateProvider</strong>: a provider to get the HTML template<br/>
+        <em>ITemplateProvider interface:</em>
+        <code class="ps-1">
+            interface ITemplateProvider {<br/>
+            &nbsp;&nbsp;<strong>get()</strong>: string | Promise<string>;<br/>
+            }
+        </code>
+        <em>Example:</em>
+        <code class="ps-1">
+            <em>string result:</em><br/>
+            {<br/>
+            &nbsp;&nbsp;get: () => 'HTML TEMPLATE'<br/>
+            }<br/>
+            <br/>
+            <em>Promise result:</em><br/>
+            {<br/>
+            &nbsp;&nbsp;get: () => new Promise((resolve, reject) => {<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;resolve('HTML TEMPLATE');<br/>
+            &nbsp;&nbsp;})<br/>
+            }
+        </code>
+        • <strong>[string, string | ITemplateProvider]</strong>:
+        <code class="ps-1">
+            <strong>string</strong>: container name<br/>
+            <strong>string | ITemplateProvider</strong>: path to HTML template or a provider to get the HTML template<br/>
+        </code>
+        <em>Example:</em><br/>
+        <code class="ps-1">
+            ['container-name', '/src/page.html']
+        </code>
+        <strong>...containerBootstrapMetaData: Array&lt;IContextConfig | IEntityDependencyConstructor&gt;</strong><br/>
+        • <strong>IContextConfig</strong>: container context (decorated class) configuration<br/>
+        <em>IContextConfig interface:</em>
+        <code class="ps-1">
+            interface IContextConfig {<br/>
+            &nbsp;&nbsp;<span class="pico-color-green-700">//context-specific change detection strategy. By default global change detection strategy value will be used, if configured. Default value: false.</span><br/>
+            &nbsp;&nbsp;<strong>pessimisticChangeDetectionStrategy</strong>?: boolean;<br/>
+
+            &nbsp;&nbsp;<span class="pico-color-green-700">//context-specific htmlSanitizer. By default global htmlSanitizer value will be used, if configured</span><br/>
+            &nbsp;&nbsp;<strong>htmlSanitizer</strong>?: (html: string) => string;<br/>
+            }
+        </code>
+        <em>Example:</em>
+        <code class="ps-1">
+            {<br/>
+            &nbsp;&nbsp;pessimisticChangeDetectionStrategy: true,<br/>
+            &nbsp;&nbsp;htmlSanitizer: html => html<br/>
+            }
+        </code>
+        • <strong>Array&lt;string&gt;</strong>: $Template or $AdoptedStyle registration<br/>
+        <em>Example:</em>
+        <code class="ps-1">
+            [$Template('my-template', html), $AdoptedStyle('my-style', style)]
+        </code>
+        • <strong>IEntityDependencyConstructor</strong>: dependencies (containers, components, aspects, transformers or injectables) used in container or in child entities<br/>
+        <em>IEntityDependencyConstructor type:</em>
+        <code class="ps-1">
+            IContextConstructor | IComponentContextConstructor |<br/>
+            IAspectContextConstructor | ITransformerContextConstructor | IInjectableConstructor
+        </code>
+    </div>
+</article>
+
+<!--container context-->
+<article nb-template="@mono-slot-tile">
+    <span class="pico-color-green-500" nb-projection="@header">IContext</span>
+    <span nb-projection="@sub-header">container context interface</span>
+    <div nb-projection="@content">
+        <em>IContext interface:</em>
+        <code class="ps-1">
+            interface IContext {<br/>
+            &nbsp;&nbsp;<span class="pico-color-green-700">//Invoked when container is attached</span><br/>
+            &nbsp;&nbsp;<strong>onContainerAttached</strong>?: (context: IContext) => void;<br/>
+
+            &nbsp;&nbsp;<span class="pico-color-green-700">//Invoked when container is detached</span><br/>
+            &nbsp;&nbsp;<strong>onContainerDetached</strong>?: (context: IContext) => void;<br/>
+
+            &nbsp;&nbsp;<span class="pico-color-green-700">//Invoked when all inputs are refreshed</span><br/>
+            &nbsp;&nbsp;<strong>onInputsRefreshDone</strong>?: () => void;<br/>
+
+            &nbsp;&nbsp;<span class="pico-color-green-700">//Invoked when change detection is completed</span><br/>
+            &nbsp;&nbsp;<strong>onDetectChangesDone</strong>?: () => void;<br/>
+
+            &nbsp;&nbsp;<span class="pico-color-green-700">//Invoked when context is disposed</span><br/>
+            &nbsp;&nbsp;<strong>onDispose</strong>?: () => void;<br/>
+            }
+        </code>
+        <em>Example:</em>
+        <code class="ps-1">
+            @Container(html)<br/>
+            export class HtmlFromFile {<br/>
+            &nbsp;&nbsp;public onDispose(): void {<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;console.log('Container HtmlFromFile disposed');<br/>
+            &nbsp;&nbsp;}<br/>
+            }
+        </code>
+    </div>
+</article>

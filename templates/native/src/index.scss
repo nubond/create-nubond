@@ -1,0 +1,15 @@
+@use './styles/fonts.scss';
+@use './styles/sizes.scss';
+@use './styles/colors.scss';
+
+html, body {
+  font-family: "Open Sans", sans-serif;
+}
+
+body { 
+  min-height: 100vh;
+  margin: 0;
+
+  //color: var(--text-color);
+  //background-color: var(--background-color);
+}

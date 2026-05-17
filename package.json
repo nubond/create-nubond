@@ -1,0 +1,28 @@
+{
+  "name": "create-nubond",
+  "description": "Official scaffolder for nuBond apps — bootstraps a Parcel + TypeScript project with routing, DI, Web Components, and entity generators in a single command",
+  "author": "Dmytro Tomayly",
+  "keywords": [
+    "create-nubond", "nubond", "scaffolder", "scaffold", "starter", "template", "boilerplate",
+    "cli", "generator", "init", "create", "npm-init", "parcel", "typescript", "web-components"
+  ],
+  "homepage": "https://github.com/nubond/create-nubond",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nubond/create-nubond.git"
+  },
+  "license": "MIT",
+  "version": "1.0.0",
+  "bin": "src/index.js",
+  "main": "src/index.js",
+  "files": [
+    "templates"
+  ],
+  "scripts": {
+    "serve": "tsc -w",
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "tslib": "^2.8.1"
+  }
+}

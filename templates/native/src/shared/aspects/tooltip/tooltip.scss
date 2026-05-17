@@ -1,0 +1,222 @@
+[tooltip] {
+  position: relative;
+
+  --tooltip-background-color: var(--colorNeutralBackground1);
+  --tooltip-text-color: var(--colorNeutralForeground1);
+  --tooltip-border-color: var(--colorNeutralBackground1Hover);
+
+  &:not(a, button, fluent-button, input, [role="button"]) {
+    text-decoration: none;
+    cursor: help;
+  }
+
+  &[placement="top"]::before,
+  &[placement="top"]::after,
+  &::before,
+  &::after {
+    display: block;
+    z-index: 99;
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    padding: 0.25rem 0.5rem;
+    overflow: hidden;
+    transform: translate(-50%, -0.25rem);
+    border-radius: 0.25rem;
+    background: var(--tooltip-background-color);
+    content: attr(tooltip);
+    color: var(--tooltip-text-color);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.875rem;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  &:before {
+    border: 1px solid var(--tooltip-border-color);
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.12), 0 8px 16px rgba(0, 0, 0, 0.14);
+  }
+
+  // Caret
+  &[placement="top"]::after,
+  &::after {
+    padding: 0;
+    transform: translate(-50%, 0rem);
+    border-top: 0.35rem solid;
+    border-right: 0.35rem solid transparent;
+    border-left: 0.35rem solid transparent;
+    border-radius: 0;
+    background-color: transparent;
+    content: "";
+    color: var(--tooltip-background-color);
+  }
+
+  &[placement="bottom"] {
+    &::before,
+    &::after {
+      top: 100%;
+      bottom: auto;
+      transform: translate(-50%, 0.25rem);
+    }
+
+    &:after {
+      transform: translate(-50%, -0.35rem);
+      border: 0.35rem solid transparent;
+      border-bottom: 0.35rem solid;
+    }
+  }
+
+  &[placement="left"] {
+    &::before,
+    &::after {
+      top: 50%;
+      right: 100%;
+      bottom: auto;
+      left: auto;
+      transform: translate(-0.25rem, -50%);
+    }
+
+    &:after {
+      transform: translate(0.35rem, -50%);
+      border: 0.35rem solid transparent;
+      border-left: 0.35rem solid;
+    }
+  }
+
+  &[placement="right"] {
+    &::before,
+    &::after {
+      top: 50%;
+      right: auto;
+      bottom: auto;
+      left: 100%;
+      transform: translate(0.25rem, -50%);
+    }
+
+    &:after {
+      transform: translate(-0.35rem, -50%);
+      border: 0.35rem solid transparent;
+      border-right: 0.35rem solid;
+    }
+  }
+
+  // Display
+  //&:focus,
+  &:hover {
+    &:not(:disabled) {
+      &::before,
+      &::after {
+        opacity: 1;
+      }
+    }
+  }
+
+  // Animations, excluding touch devices
+  @media (hover: hover) and (pointer: fine) {
+    // Default (top)
+    //&:focus,
+    &:hover {
+      &:not(:disabled) {
+        &::before,
+        &::after {
+          --tooltip-slide-to: translate(-50%, -0.25rem);
+          transform: translate(-50%, 0.75rem);
+          animation-duration: 0.2s;
+          animation-fill-mode: forwards;
+          animation-name: tooltip-slide;
+          opacity: 0;
+        }
+
+        &::after {
+          --tooltip-caret-slide-to: translate(-50%, 0rem);
+          transform: translate(-50%, -0.25rem);
+          animation-name: tooltip-caret-slide;
+        }
+      }
+    }
+
+    // Bottom
+    &[placement="bottom"] {
+      //&:focus,
+      &:hover {
+        &:not(:disabled) { 
+          &::before,
+          &::after {
+            --tooltip-slide-to: translate(-50%, 0.25rem);
+            transform: translate(-50%, -0.75rem);
+            animation-name: tooltip-slide;
+          }
+
+          &::after {
+            --tooltip-caret-slide-to: translate(-50%, -0.35rem);
+            transform: translate(-50%, -0.5rem);
+            animation-name: tooltip-caret-slide;
+          }
+        }
+      }
+    }
+
+    // Left
+    &[placement="left"] {
+      //&:focus,
+      &:hover {
+        &:not(:disabled) {  
+          &::before,
+          &::after {
+            --tooltip-slide-to: translate(-0.25rem, -50%);
+            transform: translate(0.75rem, -50%);
+            animation-name: tooltip-slide;
+          }
+
+          &::after {
+            --tooltip-caret-slide-to: translate(0.35rem, -50%);
+            transform: translate(0.05rem, -50%);
+            animation-name: tooltip-caret-slide;
+          }
+        }
+      }
+    }
+
+    // Right
+    &[placement="right"] {
+      //&:focus,
+      &:hover {
+        &:not(:disabled) { 
+          &::before,
+          &::after {
+            --tooltip-slide-to: translate(0.25rem, -50%);
+            transform: translate(-0.75rem, -50%);
+            animation-name: tooltip-slide;
+          }
+
+          &::after {
+            --tooltip-caret-slide-to: translate(-0.35rem, -50%);
+            transform: translate(-0.05rem, -50%);
+            animation-name: tooltip-caret-slide;
+          }
+        }
+      }
+    }
+  }
+
+  @keyframes tooltip-slide {
+    to {
+      transform: var(--tooltip-slide-to);
+      opacity: 1;
+    }
+  }
+
+  @keyframes tooltip-caret-slide {
+    50% {
+      opacity: 0;
+    }
+    to {
+      transform: var(--tooltip-caret-slide-to);
+      opacity: 1;
+    }
+  }
+}

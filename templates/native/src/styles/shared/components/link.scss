@@ -1,0 +1,12 @@
+a {
+  color: var(--text-color);
+  text-decoration: none;
+
+  &:visited {
+    color: var(--text-color);
+  }
+
+  &:disabled {
+    opacity: .5;
+  }
+}

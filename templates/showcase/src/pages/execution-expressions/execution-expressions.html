@@ -1,0 +1,165 @@
+<!--header-->
+<hgroup>
+    <h2>Execution Expressions</h2>
+    <p>Associated with element handlers</p>
+</hgroup>
+
+<!--description-->
+<article class="d-flex align-items-center pico-background-cyan-500">
+    <span nb-template="@bulb-icon"></span>
+    <div class="ms-3">
+        <p class="mb-0">• An expression is a small, valid JavaScript snippet (optionally prefixed with a flag) associated with a particular element handler</p>
+        <p class="mb-0">• Each expression has a <em>this</em> that points to the current execution context (the class context)</p>
+        <p class="mb-0">• Each expression has its own execution parameters that are available without <em>this</em> — they are injected as parameters</p>
+    </div>
+</article>
+
+<!--Execution expressions - flags -->
+<article nb-template="@mono-slot-tile">
+    <span class="pico-color-green-500" nb-projection="@header">Execution expressions</span>
+    <span nb-projection="@sub-header">prefix flags</span>
+    <div nb-projection="@content">
+        <div class="row">
+            <div class="col">
+                <h4 class="mt-1"><span class="pico-color-green-500">@</span> | constant expression flag</h4>
+                <h5 class="mt-0 mb-2">When there is a need to bind a constant value</h5>
+                <code class="ps-1">
+                    nb-value="@Hello"
+                </code>
+                <p class="mb-0" nb-value="@Hello"></p>
+            </div>
+            <div class="col">
+                <h4 class="mt-1"><span class="pico-color-green-500">#</span> | one time binding expression flag</h4>
+                <h5 class="mt-0 mb-2">When you need to bind a value once, as soon as it becomes available</h5>
+                <code class="ps-1">
+                    nb-value="<span class="pico-color-green-500">#</span>this.value"
+                </code>
+                <p class="mb-0" nb-value="#this.value"></p>
+            </div>
+        </div>
+        <hr class="mt-4"/>
+        <div class="row">
+            <div class="col">
+                <h4 class="mt-1">
+                    <span class="pico-color-green-500">%</span> | route <a class="cursor-pointer" 
+                          nb-event:click="router.go('routing'), document.scrollingElement.scroll(0, 0)"
+                          nb-aspect:tooltip="@More details"><span class="border-bottom-0" nb-projection="@icons" nb-template="@link-icon"></span></a> slot constant expression flag
+                </h4>
+                <h5 class="mt-0 mb-2">Router container expression extension</h5>
+                <code class="ps-1">
+                    nb-container="%page"
+                </code>
+                The container subscribes to a specific route slot to get the slot container name
+            </div>
+        </div>
+    </div>
+</article>
+
+<!--Execution expression - parameters -->
+<article nb-template="@mono-slot-tile">
+    <span class="pico-color-green-500" nb-projection="@header">Execution expressions</span>
+    <span nb-projection="@sub-header">in-element handlers</span>
+    <div nb-projection="@content">
+        <div class="row">
+            <div class="col border-end">
+                <h4>Base execution expression</h4>
+                <h5 class="mb-2">Context is accessible by <em>this</em></h5>
+                <em>Example:</em>
+                <code class="ps-1">
+                    nb-value="<span class="pico-color-green-500">this</span>.value"
+                </code>
+                <p nb-value="this.value"></p>
+
+                <h5 class="mb-2">
+                    Transformers 
+                    <a class="cursor-pointer" 
+                       nb-event:click="router.go('extenders'), document.scrollingElement.scroll(0, 0)"
+                       nb-aspect:tooltip="@More details"><span class="border-bottom-0" nb-projection="@icons" nb-template="@link-icon"></span></a> 
+                    are accessible by name
+                </h5>
+                <em>Example:</em>
+                <code class="ps-1">
+                    nb-value="<span class="pico-color-green-500">dateFormat</span>(this.transformer)"
+                </code>
+                <p nb-value="dateFormat(this.transformer)"></p>
+                    
+                <hr class="mt-3 mb-2"/>
+
+                <h4 class="mt-1">
+                    nb-<span class="pico-color-green-500">repeat</span> 
+                    <a class="cursor-pointer" 
+                       nb-event:click="router.go('basics'), document.scrollingElement.scroll(0, 0)"
+                       nb-aspect:tooltip="@More details"><span class="border-bottom-0" nb-projection="@icons" nb-template="@link-icon"></span></a> 
+                    expression parameters
+                </h4>
+                <h5 class="mt-0 mb-2">Repeat extends base execution expression parameters with</h5>
+                • <strong>index: number</strong>: current repeat index<br/>
+                • <strong>count: number</strong>: total number of repeat items<br/>
+                • <strong>item: any</strong>: current repeat item<br/>
+                <em>Example:</em>
+                <code class="ps-1">
+                    nb-value="`index: ${<span class="pico-color-green-500">index</span>}, value: ${<span class="pico-color-green-500">item</span>}, count: ${<span class="pico-color-green-500">count</span>}`"
+                </code>
+                <p nb-repeat="this.repeat" nb-value="`index: ${index}, value: ${item}, count: ${count}`"></p>
+
+                <em>Example:</em>
+                <code class="ps-1">
+                    nb-value="`outer index: ${<span class="pico-color-green-500">outer</span>Index}, index: ${index}`"<br/>
+                    nb-value="`outer value: ${<span class="pico-color-green-500">outer</span>Item}, value: ${item}`"<br/>
+                    nb-value="`outer count: ${<span class="pico-color-green-500">outer</span>Count}, count: ${count}`"
+                </code>
+                <p nb-repeat:outer="this.outerRepeat">
+                    <span nb-repeat="this.repeat">
+                        <span nb-value="`outer index: ${outerIndex}, index: ${index}`"></span><br/>
+                        <span nb-value="`outer value: ${outerItem}, value: ${item}`"></span><br/>
+                        <span nb-value="`outer count: ${outerCount}, count: ${count}`"></span><br/><br/>
+                    </span>
+                </p>
+            </div>
+
+            <div class="col">
+                <h4 class="mt-1">
+                    nb-<span class="pico-color-green-500">bound</span> 
+                    <a class="cursor-pointer" 
+                       nb-event:click="router.go('basics'), document.scrollingElement.scroll(0, 0)"
+                       nb-aspect:tooltip="@More details"><span class="border-bottom-0" nb-projection="@icons" nb-template="@link-icon"></span></a> 
+                    expression parameters</h4>
+                <h5 class="mt-0 mb-2">Bound extends base execution expression parameters with</h5>
+                • <strong>element: Element</strong>: element that has been bound<br/>
+                <em>Example:</em>
+                <code class="ps-1">
+                    nb-bound="this.boundElement = <span class="pico-color-green-500">nativeElement</span>"
+                </code>
+                <p nb-bound="this.boundElement = nativeElement" nb-value="`Bound to: ${this.boundElement.tagName} element`"></p>
+
+                <hr class="mt-3 mb-2"/>
+
+                <h4 class="mt-1">
+                    nb-<span class="pico-color-green-500">event</span> 
+                    <a class="cursor-pointer" 
+                       nb-event:click="router.go('basics'), document.scrollingElement.scroll(0, 0)"
+                       nb-aspect:tooltip="@More details"><span class="border-bottom-0" nb-projection="@icons" nb-template="@link-icon"></span></a>
+                    expression parameters</h4>
+                <h5 class="mt-0 mb-2">Event extends base execution expression parameters with</h5>
+                • <strong>element: ElementManipulations</strong>
+                    <a class="cursor-pointer" 
+                       nb-event:click="router.go('dependencyinjections'), document.scrollingElement.scroll(0, 0)"
+                       nb-aspect:tooltip="@More details"><span class="border-bottom-0" nb-projection="@icons" nb-template="@link-icon"></span></a>: element manipulations<br/>
+                • <strong>event: Event</strong>: <a href="https://developer.mozilla.org/en-US/docs/Web/API/Event" target="_blank">event</a><br/>
+                • <strong>data: any</strong>: custom event data<br/>
+                • <strong>unSubscribe: () => void</strong>: unsubscribe function<br/>
+                • <strong>router: Router <a class="cursor-pointer"
+                                            nb-event:click="router.go('routing'), document.scrollingElement.scroll(0, 0)"
+                                            nb-aspect:tooltip="@More details"><span class="border-bottom-0" nb-projection="@icons" nb-template="@link-icon"></span></a>
+                        | undefined</strong>: the Router instance if one is configured<br/>
+                <em>Example:</em>
+                <code class="ps-1">
+                    nb-event:mouseover=<br/>"<span class="pico-color-green-500">element</span>.styles.set('color', '#D9269D')"<br/>
+                    nb-event:mouseout=<br/>"<span class="pico-color-green-500">element</span>.styles.set('color', null)"
+                </code>
+                <button class="outline" nb-event:mouseover="element.styles.set('color', '#D9269D')" 
+                                        nb-event:mouseout="element.styles.set('color', null)">Button mouseover</button>
+            </div>
+        </div>
+    </div>
+</article>

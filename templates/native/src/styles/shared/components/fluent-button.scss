@@ -1,0 +1,27 @@
+fluent-anchor-button, fluent-button, fluent-compound-button, fluent-menu-button, fluent-toggle-button {
+  contain: none;
+  
+  &[size='zero'] {
+    min-width: 0;
+    min-height: 0;
+    padding: 2px;
+  }
+
+  &[appearance='stealth'] {
+    border: none;
+    
+    &:not(:hover) {
+      &:not(:active) {
+        background-color: transparent;
+      }
+    }
+
+    &:hover {
+      background-color: rgba(var(--background-color-transparent-rgba));
+    }
+
+    &:active {
+      background-color: rgba(var(--background-color-transparent-dark-rgba));
+    }
+  }
+}

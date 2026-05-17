@@ -1,0 +1,6 @@
+https://getbootstrap.com/docs/4.2/utilities/flex/
+https://picocss.com/docs/forms/switch
+https://learn.microsoft.com/en-us/fluent-ui/web-components/components/switch?pivots=typescript
+
+https://github.com/microsoft/fluentui/tree/master/packages/web-components
+https://www.fluentui-blazor.net/

@@ -1,0 +1,104 @@
+html {
+  //palette
+  --white: #ffffff;
+  --white-rgb: 255, 255, 255;
+
+  --black: #000000;
+  --black-rgb: 0, 0, 0;
+
+  --regularGray: #808080;
+
+  --yellowGold: #FFB900;
+  --gold: #FF8C00;
+
+  --orangeBright: #F7630C;
+  --orangeDark: #CA5010;
+
+  --rust: #DA3B01;
+  --paleRust: #EF6950;
+
+  --brickRed: #D13438;
+  --modRed: #FF4343;
+  --paleRed: #E74856;
+  --red: #E81123;
+
+  --roseBright: #EA005E;
+  --rose: #C30052;
+
+  --plumLight: #E3008C;
+  --plum: #BF0077;
+
+  --orchidLight: #C239B3;
+  --orchid: #9A0089;
+
+  --blue: #0078D4;
+  --navyBlue: #0063B1;
+
+  --purpleShadow: #8E8CD8;
+  --purpleShadowDark: #6B69D6;
+
+  --irisPastel: #8764B8;
+  --irisSpring: #744DA9;
+
+  --violetRedLight: #B146C2;
+  --violetRed: #881798;
+
+  --coolBlueBright: #0099BC;
+  --coolBlue: #2D7D9A;
+
+  --seafom: #00B7C3;
+  --seafomTeal: #038387;
+
+  --mintLight: #00B294;
+  --mintDark: #018574;
+
+  --turfGreen: #00CC6A;
+  --sportGreen: #10893E;
+
+  --gray: #7A7574;
+  --grayBrown: #5D5A58;
+
+  --steelBlue: #68768A;
+  --metalBlue: #515C6B;
+
+  --paleMoss: #567C73;
+  --moss: #486860;
+
+  --meadowGreen: #498205;
+  --green: #107C10;
+
+  --overcast: #767676;
+
+  --storm: #4C4A48;
+
+  --blueGray: #69797E;
+  --darkGray: #4A5459;
+
+  --liddyGreen: #647C64;
+
+  --sage: #525E54;
+
+  --camouflageDessert: #847545;
+  --camouflage: #7E735F;
+
+  //specific
+  --background-color: var(--white);
+  --background-color-rgb: var(--white-rgb);
+
+  --text-color: var(--black);
+  --text-color-rgb: var(--black-rgb);
+
+  --background-color-transparent-rgba: var(--black-rgb), .1;
+  --background-color-transparent-dark-rgba: var(--black-rgb), .05;
+
+  @media (prefers-color-scheme: dark) {
+    --background-color: var(--black);
+    --background-color-rgb: var(--black-rgb);
+
+    --text-color: var(--white);
+    --text-color-rgb: var(--white-rgb);
+
+    --background-color-transparent-rgba: var(--white-rgb), .1;
+    --background-color-transparent-dark-rgba: var(--white-rgb), .05;
+  }
+}

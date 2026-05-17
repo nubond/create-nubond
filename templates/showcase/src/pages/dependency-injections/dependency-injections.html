@@ -1,0 +1,188 @@
+<!--header-->
+<hgroup>
+    <h2>Dependency Injections</h2>
+    <p>Class-based dependency injections</p>
+</hgroup>
+
+<!--description-->
+<article class="d-flex align-items-center pico-background-cyan-500">
+    <span nb-template="@bulb-icon"></span>
+    <div class="ms-3">
+        <p class="mb-0">• Dependency injection significantly simplifies application development</p>
+        <p class="mb-0">• Dependency injection can be used on any class marked with a special decorator</p>
+    </div>
+</article>
+
+<!--Dependency Injections-->
+<article nb-template="@mono-slot-tile">
+    <span nb-projection="@header"><span class="pico-color-green-500">Dependency Injections</span></span>
+    <span nb-projection="@sub-header">regular dependency injections</span>
+    <div nb-projection="@content">
+        <div class="d-flex align-items-baseline">
+            <h3 class="mb-0">@Injectable</h3>
+            <h3 class="mb-0">&nbsp;|&nbsp;</h3>
+            <h4 class="mb-0">injectable decorator</h4>
+            <span class="ms-2 border-bottom-0"
+                  nb-projection="@icons" 
+                  nb-aspect:tooltip="@Any class marked with the @Injectable decorator can be injected into any other class marked with a nuBond decorator"
+                  nb-template="@info-icon">
+            </span>
+        </div>
+        <code class="mb-2 mt-1 pe-0 pt-2 ps-1 pb-2">
+            function Injectable<T extends IInjectableConstructor>(singleton: boolean = false) {<br/>}
+        </code>
+        Parameters:<br/>
+        <strong>singleton: boolean</strong>: <em>true</em> — this injection has only one instance; <em>false</em> — each injection creates a new instance<br/>
+        <em>Registration example:</em>
+        <code class="ps-1">
+            @Injectable()<br/>
+            export class UserService {<br/>}
+        </code>
+        <em>Dependency injection example:</em>
+        <code class="ps-1">
+            constructor(userService: UserService) {<br/>
+            &nbsp;&nbsp;userService.registerUserLogin();<br/>
+            }
+        </code>
+    </div>
+</article>
+
+<!--Dependency Injections-->
+<article nb-template="@mono-slot-tile">
+    <span nb-projection="@header"><span class="pico-color-green-500">Dependency Injections</span></span>
+    <span nb-projection="@sub-header">context-specific dependency injections</span>
+    <div nb-projection="@content">
+        <div class="row">
+            <div class="col border-end">
+                <h4>Context related</h4>
+                • <strong class="pico-color-green-500">ChangeDetector</strong>: bridge to request change detection<br/>
+                <em>ChangeDetector class:</em>
+                <code class="ps-1">
+                    class ChangeDetector {<br/>
+                    &nbsp;&nbsp;<span class="pico-color-green-700">//request change detection</span><br/>
+                    &nbsp;&nbsp;<strong>detect()</strong>: void;<br/>
+                    }
+                </code>
+                <em>Example:</em>
+                <code class="ps-1">
+                    constructor(changeDetector: ChangeDetector) {<br/>
+                    &nbsp;&nbsp;changeDetector.detect();<br/>
+                    }
+                </code>
+                <h5 class="mb-0 mt-0">Available in</h5>
+                • <strong class="pico-color-green-500">IContext</strong> (@AppRoot, @Container)<br/>
+                • <strong class="pico-color-green-500">IComponentContext</strong> (@Component)<br/>
+                • <strong class="pico-color-green-500">IAspectContext</strong> (@Aspect)<br/>
+            </div>
+            <div class="col">
+                <h4>Element related</h4>
+                • <strong class="pico-color-green-500">ElementManipulations</strong>: element state manipulations<br/>
+                <em>ElementManipulations class:</em>
+                <code class="ps-1">
+                    class ElementManipulations {<br/>
+                    &nbsp;&nbsp;<span class="pico-color-green-700">//manipulate element`s properties</span><br/>
+                    &nbsp;&nbsp;properties: {<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="pico-color-green-700">//get element`s property value</span><br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<strong>get(propertyKey: string)</strong>: any,<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="pico-color-green-700">//set element`s property value</span><br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<strong>set(propertyKey: string, propertyValue: any)</strong>: void<br/>
+                    &nbsp;&nbsp;},<br/>
+                    &nbsp;&nbsp;<span class="pico-color-green-700">//manipulate element`s attributes</span><br/>
+                    &nbsp;&nbsp;attributes: {<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="pico-color-green-700">//check if element has attribute</span><br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<strong>has(attributeName: string)</strong>: boolean,<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="pico-color-green-700">//get element`s attribute value</span><br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<strong>get(attributeName: string)</strong>: string | undefined,<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="pico-color-green-700">//get all element`s attributes with values</span><br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<strong>getAll()</strong>: Map&lt;string, string | undefined&gt;,<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="pico-color-green-700">//set element`s attribute value</span><br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<strong>set(attributeName: string, attributeValue?: string | null)</strong>: void,<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="pico-color-green-700">//remove element`s attribute</span><br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<strong>remove(attributeName: string)</strong>: void<br/>
+                    &nbsp;&nbsp;},<br/>
+                    &nbsp;&nbsp;<span class="pico-color-green-700">//manipulate element`s styles</span><br/>
+                    &nbsp;&nbsp;styles: {<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="pico-color-green-700">//check if element has style</span><br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<strong>has(propertyName: string)</strong>: boolean,<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="pico-color-green-700">//get element`s style value</span><br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<strong>get(propertyName: string)</strong>: string | undefined,<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="pico-color-green-700">//get all element`s styles with values</span><br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<strong>getAll()</strong>: Map&lt;string, string&gt;,<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="pico-color-green-700">//set element`s style value</span><br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<strong>set(propertyName: string, propertyValue?: string | null)</strong>: void,<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="pico-color-green-700">//remove element`s style</span><br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<strong>remove(propertyName: string)</strong>: void<br/>
+                    &nbsp;&nbsp;},<br/>
+                    &nbsp;&nbsp;<span class="pico-color-green-700">//manipulate element`s classes</span><br/>
+                    &nbsp;&nbsp;classes: {<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="pico-color-green-700">//check if element has class</span><br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<strong>has(className: string)</strong>: boolean,<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="pico-color-green-700">//get all element`s classes with values</span><br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<strong>getAll()</strong>: Array&lt;string&gt;,<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="pico-color-green-700">//add element`s class</span><br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<strong>add(className: string)</strong>: void,<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="pico-color-green-700">//remove element`s class</span><br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<strong>remove(className: string)</strong>: void,<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="pico-color-green-700">//toggle element`s class</span><br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<strong>toggle(className: string)</strong>: void<br/>
+                    &nbsp;&nbsp;}<br/>
+                    }
+                </code>
+                <em>Example:</em>
+                <code class="ps-1">
+                    constructor(elementManipulations: ElementManipulations) {<br/>
+                    &nbsp;&nbsp;elementManipulations.classes.add('ready');<br/>
+                    }
+                </code>
+                <h5 class="mb-0 mt-0">Available in</h5>
+                • <strong class="pico-color-green-500">IComponentContext</strong> (@Component)<br/>
+                • <strong class="pico-color-green-500">IAspectContext</strong> (@Aspect)<br/>
+
+                <hr class="mt-3 mb-2"/>
+
+                • <strong class="pico-color-green-500">ElementSubscriptions</strong>: element events handling<br/>
+                <em>ElementSubscriptions class:</em>
+                <code class="ps-1">
+                    class ElementSubscriptions {<br/>
+                    &nbsp;&nbsp;<span class="pico-color-green-700">//check if subscribed to an event</span><br/>
+                    &nbsp;&nbsp;isSubscribed(eventName: string): boolean;<br/>
+                    &nbsp;&nbsp;<span class="pico-color-green-700">//check if unsubscribed from an event after a previous subscription</span><br/>
+                    &nbsp;&nbsp;isUnSubscribed(eventName: string): boolean;<br/>
+                    &nbsp;&nbsp;<span class="pico-color-green-700">//subscribe to an event; returns an unsubscribe function</span><br/>
+                    &nbsp;&nbsp;subscribe(eventName: string, callBack: { (evt: Event): any }, options?: boolean | AddEventListenerOptions): (() => void);<br/>
+                    }
+                </code>
+                <em>Example:</em>
+                <code class="ps-1">
+                    constructor(elementSubscriptions: ElementSubscriptions) {<br/>
+                    &nbsp;&nbsp;elementSubscriptions.subscribe('click', evt => console.dir(evt));<br/>
+                    }
+                </code>
+                <h5 class="mb-0 mt-0">Available in</h5>
+                • <strong class="pico-color-green-500">IComponentContext</strong> (@Component)<br/>
+                • <strong class="pico-color-green-500">IAspectContext</strong> (@Aspect)<br/>
+
+                <hr class="mt-3 mb-2"/>
+
+                • <strong class="pico-color-green-500">EventDispatcher</strong>: <a href="https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/CustomEvent" target="_blank">CustomEvent</a> dispatching<br/>
+                <em>EventDispatcher class:</em>
+                <code class="ps-1">
+                    class EventDispatcher {<br/>
+                    &nbsp;&nbsp;<span class="pico-color-green-700">//dispatch event</span><br/>
+                    &nbsp;&nbsp;dispatch(name: string, data?: any): boolean;<br/>
+                    }
+                </code>
+                <em>Example:</em>
+                <code class="ps-1">
+                    constructor(eventDispatcher: EventDispatcher) {<br/>
+                    &nbsp;&nbsp;eventDispatcher.dispatch('output', this.output);<br/>
+                    }
+                </code>
+                <h5 class="mb-0 mt-0">Available in</h5>
+                • <strong class="pico-color-green-500">IContext</strong> (@AppRoot, @Container)<br/>
+                • <strong class="pico-color-green-500">IComponentContext</strong> (@Component)<br/>
+                • <strong class="pico-color-green-500">IAspectContext</strong> (@Aspect)<br/>
+            </div>
+        </div>
+    </div>
+</article>

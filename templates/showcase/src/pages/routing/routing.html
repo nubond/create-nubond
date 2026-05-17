@@ -1,0 +1,133 @@
+<!--header-->
+<hgroup>
+    <h2>Routing</h2>
+    <p>Route-based application state management</p>
+</hgroup>
+
+<!--description-->
+<article class="d-flex align-items-center pico-background-cyan-500">
+    <span nb-template="@bulb-icon"></span>
+    <div class="ms-3">
+        <p class="mb-0">• In web apps — ideal for route management</p>
+        <p class="mb-0">• In desktop or mobile apps — ideal for type-based application state management</p>
+    </div>
+</article>
+
+<!--Routing-->
+<article nb-template="@mono-slot-tile">
+    <span nb-projection="@header"><span class="pico-color-green-500">Routing</span></span>
+    <span nb-projection="@sub-header">application state management</span>
+    <div nb-projection="@content">
+        <div class="row">
+            <!--Routing configuration-->
+            <div class="col">
+                <h4 class="mb-2">Route configuration</h4>
+                The route is configured in the @AppRoot decorator.<br/>
+                Config template:
+                <code class="ps-1 pe-0">
+                    '/#[SLOT_NAME=DEFAULT_VALUE]/{SLOT_NAME=DEFAULT_VALUE}/CONST_VALUE'
+                </code>
+                Details:<br/>
+                • <span class="pico-color-green-500">/</span>: route configuration flag. Mandatory.<br/>
+                • <span class="pico-color-green-500">#</span>: configures the Router to work against the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Location/hash">hash</a> portion of the location.
+                        Optional. If not provided, the router uses the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Location/pathname">path</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/API/Location/search">search</a> portions of the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Location">location</a><br/>
+                • CONST_VALUE, 
+                    [SLOT_NAME=DEFAULT_VALUE], 
+                    {SLOT_NAME=DEFAULT_VALUE}: slot configuration<br/>
+                &nbsp;&nbsp; slot types:<br/>
+                &nbsp;&nbsp; • <span class="pico-color-green-500">[]</span>: container slot<br/>
+                &nbsp;&nbsp; • <span class="pico-color-green-500">{}</span>: variable slot<br/>
+                &nbsp;&nbsp; • <span class="pico-color-green-500">CONST_VALUE</span>: a constant string value slot — added to the route only if the preceding slot has a value<br/>
+                &nbsp;&nbsp; • '[]' and '{}' slot configuration:<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp; • <span class="pico-color-green-500">SLOT_NAME</span>: slot name. Mandatory.<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp; • <span class="pico-color-green-500">=</span>: defines the slot's default value. Mandatory when a default value is needed.<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp; • <span class="pico-color-green-500">DEFAULT_VALUE</span>: default slot value. Optional.<br/>
+                • Multiple slots can be specified<br/>
+                • Slots are separated by the <span class="pico-color-green-500">/</span> flag<br/>
+                • The router is position-based: each slot value is placed at that slot's position whenever possible.
+                    If at least one slot without a value precedes a slot with a value, the slot with the value is moved to the search portion of the URL instead.<br/>
+                Examples:<br/>
+                <code class="ps-1">
+                    Template: '/[page=dashboard]/{id}/{userId}/[container]'<br/>
+                    Inputs: {<br/>
+                    &nbsp;page: 'dashboard',<br/>
+                    &nbsp;userId: 1<br/>
+                    }<br/>
+                    Route: '/dashboard/?userId=1'
+                </code>
+            </div>
+
+            <!--Routing integrations-->
+            <div class="col">
+                <!--route container binding integration-->
+                <h4 class="mb-2">Route container binding integration</h4>
+                To bind a container to a specific route slot:<br/>
+                <code class="ps-1">
+                    nb-container="%SLOT_NAME"
+                </code>
+                Details:<br/>
+                • <span class="pico-color-green-500">%</span>: route binding flag. Mandatory.<br/>
+                • <span class="pico-color-green-500">SLOT_NAME</span>: name of the configured slot. Mandatory.<br/>
+                Example:<br/>
+                <code class="ps-1">
+                    nb-container="<span class="pico-color-green-500">%</span>page"
+                </code>
+
+                <hr class="mt-3 mb-2"/>
+
+                <!--route injection integration-->
+                <h4 class="mt-3 mb-2">Route injection integration</h4>
+                Router can be injected into any class:
+                <code class="ps-1">
+                    import { <span class="pico-color-green-500">Router</span> } from 'nubond';<br/>
+
+                    constructor(router: <span class="pico-color-green-500">Router</span>) {<br/>
+                    }
+                </code>
+
+                <hr class="mt-3 mb-2"/>
+                
+                <!--route expression execution context integration-->
+                <h4 class="mt-3 mb-2">Route expression execution context integration</h4>
+                Router can be accessed in any nb-event:xxx expression:
+                <code class="ps-1">
+                    nb-event:click="<span class="pico-color-green-500">router</span>.go('containers')"
+                </code>
+
+                <hr class="mt-3 mb-2"/>
+                
+                <!--route expression execution context integration-->
+                <h4 class="mt-3 mb-2">Router class</h4>
+                <code class="ps-1">
+                    class Router {<br/>
+                        &nbsp;&nbsp;<span class="pico-color-green-700">//properties</span><br/>
+                        &nbsp;&nbsp;<span class="pico-color-green-700">//is router configured</span><br/>
+                        &nbsp;&nbsp;<strong>isConfigured</strong>: boolean;<br/>
+                        &nbsp;&nbsp;<span class="pico-color-green-700">//is the router hash-based</span><br/>
+                        &nbsp;&nbsp;<strong>hashBased</strong>: boolean;<br/>
+                        &nbsp;&nbsp;<span class="pico-color-green-700">//current path</span><br/>
+                        &nbsp;&nbsp;<strong>path</strong>: string | undefined;<br/>
+                        &nbsp;&nbsp;<span class="pico-color-green-700">//current state</span><br/>
+                        &nbsp;&nbsp;<strong>state</strong>: {[key: string]: string | undefined} | undefined;<br/>
+                        <br/>
+                        &nbsp;&nbsp;<span class="pico-color-green-700">//methods</span><br/>
+                        &nbsp;&nbsp;<span class="pico-color-green-700">//go to specific state</span><br/>
+                        &nbsp;&nbsp;<strong>go(state?: {[key: string]: string | number | null | undefined} | string, partialState = true, removeHistory = false)</strong>: void;<br/>
+                        &nbsp;&nbsp;<span class="pico-color-green-700">//go to previous state</span><br/>
+                        &nbsp;&nbsp;<strong>goBack()</strong>: void;<br/>
+                        &nbsp;&nbsp;<span class="pico-color-green-700">//go to a specific state in history by index offset</span><br/>
+                        &nbsp;&nbsp;<strong>goTo(offset: number)</strong>: void;<br/>
+                        &nbsp;&nbsp;<span class="pico-color-green-700">//go to the next state</span><br/>
+                        &nbsp;&nbsp;<strong>goForward()</strong>: void;<br/>
+                        <br/>
+                        &nbsp;&nbsp;<span class="pico-color-green-700">//events</span><br/>
+                        &nbsp;&nbsp;<span class="pico-color-green-700">//subscribe to a BeforeStateChange event; returns an unsubscribe function</span><br/>
+                        &nbsp;&nbsp;<strong>onBeforeStateChange(callBack: (preventChange: () => void, oldState: {[key: string]: string | undefined}, newState: {[key: string]: string | undefined}, oldPath: string, newPath: string) => void)</strong>: () => void;<br/>
+                        &nbsp;&nbsp;<span class="pico-color-green-700">//subscribe to an AfterStateChange event; returns an unsubscribe function</span><br/>
+                        &nbsp;&nbsp;<strong>onAfterStateChange(callBack: (oldState: {[key: string]: string | undefined}, newState: {[key: string]: string | undefined}, oldPath: string, newPath: string) => void)</strong>: () => void;<br/>
+                    }
+                </code>
+            </div>
+        </div>
+    </div>
+</article>

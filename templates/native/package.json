@@ -1,0 +1,41 @@
+{
+  "name": "{APP_NAME_IN_LOWER_CASE}",
+  "source": "./src/index.html",
+  "alias": {},
+  "staticFiles": [
+    {
+      "staticPath": "./assets/favicon.ico"
+    }
+  ],
+  "scripts": {
+    "prestart": "node package-cli.js %ROOT_CWD% remove-directory dist,.parcel-cache",
+    "start": "parcel",
+    "prebuild": "node package-cli.js %ROOT_CWD% remove-directory dist,.parcel-cache",
+    "build": "parcel build",
+    "add-component": "node package-cli.js %INIT_CWD% add-component scss",
+    "acomp": "node package-cli.js %INIT_CWD% add-component scss",
+    "add-container": "node package-cli.js %INIT_CWD% add-container",
+    "acont": "node package-cli.js %INIT_CWD% add-container",
+    "add-aspect": "node package-cli.js %INIT_CWD% add-aspect",
+    "aasp": "node package-cli.js %INIT_CWD% add-aspect",
+    "add-transformer": "node package-cli.js %INIT_CWD% add-transformer",
+    "atran": "node package-cli.js %INIT_CWD% add-transformer",
+    "add-injectable": "node package-cli.js %INIT_CWD% add-injectable",
+    "ainj": "node package-cli.js %INIT_CWD% add-injectable"
+  },
+  "devDependencies": {
+    "@parcel/transformer-inline-string": "^2.16.1",
+    "@parcel/transformer-sass": "^2.16.1",
+    "@parcel/transformer-typescript-tsc": "^2.16.1",
+    "@types/node": "^25.5.2",
+    "parcel": "^2.16.1",
+    "parcel-reporter-static-files-copy": "^1.5.3",
+    "posthtml": "^0.16.7",
+    "@nubond/posthtml-value-interpolation": "^1.0.0"
+  },
+  "dependencies": {
+    "@fluentui/tokens": "^1.0.0-alpha.23",
+    "@fluentui/web-components": "^3.0.0-rc.6",
+    "nubond": "^1.0.3"
+  }
+}

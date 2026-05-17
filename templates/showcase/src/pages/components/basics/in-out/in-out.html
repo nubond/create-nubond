@@ -1,0 +1,9 @@
+<div class="root custom-row custom-p-1">
+    <div class="col">
+        <p class="custom-m-0">Hello from <strong>InOut</strong> component!</p>
+        <p class="custom-m-0"><strong>Input value:</strong> <span nb-value="this.input"></span></p>
+    </div>
+    <div class="custom-col custom-text-end">
+        <button class="custom-outline" nb-event:click="this.eventDispatcher.dispatch('output', ++this.output)">Click me</button>
+    </div>
+</div>

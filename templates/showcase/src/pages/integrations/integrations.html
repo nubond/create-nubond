@@ -1,0 +1,108 @@
+<!--header-->
+<hgroup>
+    <h2>Integrations</h2>
+    <p>External tools integrations</p>
+</hgroup>
+
+<!--description-->
+<article class="d-flex align-items-center pico-background-cyan-500">
+    <span nb-template="@bulb-icon"></span>
+    <div class="ms-3">
+        <p class="mb-0">• Both @nubond/showcase-app and @nubond/template-app use <a href="https://parceljs.org/" target="_blank">Parcel</a> as their build tool</p>
+        <p class="mb-0">• Default <a href="https://parceljs.org/" target="_blank">Parcel</a> behavior is slightly tuned for ease of use, via custom configuration (<a href="https://parceljs.org/features/plugins/#.parcelrc" target="_blank">.parcelrc</a>) and a custom PostHTML plugin (<a href="https://parceljs.org/languages/html/#posthtml" target="_blank">.posthtmlrc</a>)</p>
+    </div>
+</article>
+
+<!--Execution expressions - flags -->
+<article nb-template="@mono-slot-tile">
+    <span class="pico-color-green-500" nb-projection="@header">Parcel</span>
+    <span nb-projection="@sub-header">integrations</span>
+    <div nb-projection="@content">
+        <!-- imports -->
+        <div class="row">
+            <div class="col">
+                <h4 class="mt-1"><span class="pico-color-green-500">HTML</span> | HTML import</h4>
+                <h5 class="mt-0 mb-2">Containers and Components HTML import</h5>
+                <code class="ps-1">
+                    import html from './integrations.html';<br/><br/>
+
+                    @Container(html) or @Component(html)
+                </code>
+                The imported value is preprocessed and ready to use as an HTML template
+            </div>
+            <div class="col">
+                <h4 class="mt-1"><span class="pico-color-green-500">CSS</span> | CSS import</h4>
+                <h5 class="mt-0 mb-2">Components CSS import</h5>
+                <code class="ps-1">
+                    import css from './html-css-from-files.scss';<br/><br/>
+
+                    @Component(html, css)
+                </code>
+                The imported value is preprocessed and ready to use as CSS
+            </div>
+        </div>
+        
+        <hr class="mt-4"/>
+
+        <!-- naming conventions and named pipes -->
+        <div class="row">
+            <div class="col">
+                <h4 class="mt-1">
+                    <span class="pico-color-green-500">Naming conventions</span> | file naming conventions
+                     <span class="ms-1 border-bottom-0"
+                        nb-aspect:tooltip="@Only files with reserved names are injected by Parcel as-is; all others are inlined as strings. To override this, use the 'ref:' named pipe."
+                        nb-template="@error-icon">
+                    </span>
+                </h4>
+                <h5 class="mt-0 mb-2">Reserved file names</h5>
+                <ul>
+                    <li>
+                        Reserved for the main application HTML entry point
+                        <ul>
+                            <li>index.htm, index.html, index.xhtml</li>
+                            <li>app.htm, app.html, app.xhtml</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Reserved for the main application styles entry point
+                        <ul>
+                            <li>index.styl, index.stylus, index.sass, index.scss, index.less, index.css, index.pcss, index.sss</li>
+                            <li>app.styl, app.stylus, app.sass, app.scss, app.less, app.css, app.pcss, app.sss</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="col">
+                <h4 class="mt-1"><span class="pico-color-green-500">ref:</span> | <a href="https://parceljs.org/features/plugins/#named-pipelines" target="_blank">Named pipe</a></h4>
+                <h5 class="mt-0 mb-2">Force Parcel to include the file as a reference instead of inlining it</h5>
+                <code class="ps-1">
+                    &lt;link rel="stylesheet" href="ref:animate.min.css"&gt;<br/>
+                    &lt;script type="module" src="ref:animate.min.js"&gt;&lt;/script&gt;
+                </code>
+                Useful when external files must be included as a reference
+            </div>
+        </div>
+
+        <hr class="mt-4"/>
+
+        <!-- text interpolation -->
+        <div class="row">
+            <div class="col">
+                <h4 class="mt-1">
+                    <span class="pico-color-green-500">{{<span></span>}}</span> | Text interpolation
+                    <span class="border-bottom-0 ms-1" 
+                          nb-aspect:tooltip="@Text interpolation works only for text nodes"
+                          nb-template="@warning-icon">
+                    </span>
+                </h4>
+                <h5 class="mt-0 mb-2">Text interpolation using @nubond/posthtml-value-interpolation package</h5>
+                <code class="ps-1">
+                    {{<span>this.interpolated</span>}}<br/><br/>
+                    will be interpolated to:<br/>
+                    &lt;span nb-value="this.interpolated"&gt;&lt;/span&gt;
+                </code>
+                Interpolated value: {{this.interpolated}}
+            </div>
+        </div>
+    </div>
+</article>

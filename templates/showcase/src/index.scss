@@ -1,0 +1,58 @@
+@media (min-width: 1400px) {
+    .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+        max-width: 1480px;
+    }
+}
+
+header .logo {
+    margin-left: 8px;
+    width: 48px;
+    height: 48px
+}
+
+.icon {
+    width: 18px;
+    height: 18px;
+}
+
+.icon.xl {
+    width: 32px;
+    height: 32px;
+}
+
+.pages a, .cursor-pointer {
+    cursor: pointer;
+}
+
+header {
+    background-color: rgb(19, 22.5, 30.5);
+}
+
+dialog {
+    z-index: 100500;
+}
+
+blockquote {
+    border-left-color: var(--pico-color-green-850);
+    border-inline-start-color: var(--pico-color-green-850);
+    font-size: 85%;
+}
+
+blockquote.no-text-scale {
+    font-size: 100%;
+}
+
+code {
+    margin: var(--pico-typography-spacing-vertical) 0;
+    padding: var(--pico-spacing);
+    border-right: none;
+    border-left: .25rem solid var(--pico-color-green-850);
+    border-inline-start: .25rem solid var(--pico-color-green-850);
+    border-inline-end: none;
+    display: block;
+}
+
+[data-tooltip].animate__rotateIn::after, [data-tooltip].animate__rotateIn::before, 
+[data-tooltip].animate__rotateOut::after, [data-tooltip].animate__rotateOut::before {
+    display: none;
+}

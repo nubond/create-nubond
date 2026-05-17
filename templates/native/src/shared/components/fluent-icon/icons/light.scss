@@ -1,0 +1,607 @@
+:host([type="light"]):before {
+  font-family: fluent-icons-light !important;
+}
+
+:host([type="light"][icon="accessibility_checkmark_32"]):before {
+  content: "\e000";
+}
+:host([type="light"][icon="add_32"]):before {
+  content: "\e001";
+}
+:host([type="light"][icon="alert_32"]):before {
+  content: "\e002";
+}
+:host([type="light"][icon="app_folder_32"]):before {
+  content: "\e003";
+}
+:host([type="light"][icon="app_generic_32"]):before {
+  content: "\e004";
+}
+:host([type="light"][icon="archive_32"]):before {
+  content: "\e005";
+}
+:host([type="light"][icon="archive_settings_32"]):before {
+  content: "\e006";
+}
+:host([type="light"][icon="arrow_clockwise_32"]):before {
+  content: "\e007";
+}
+:host([type="light"][icon="arrow_down_32"]):before {
+  content: "\e008";
+}
+:host([type="light"][icon="arrow_download_32"]):before {
+  content: "\e009";
+}
+:host([type="light"][icon="arrow_forward_32"]):before {
+  content: "\e00a";
+}
+:host([type="light"][icon="arrow_hook_down_left_32"]):before {
+  content: "\e00b";
+}
+:host([type="light"][icon="arrow_hook_down_right_32"]):before {
+  content: "\e00c";
+}
+:host([type="light"][icon="arrow_hook_up_left_32"]):before {
+  content: "\e00d";
+}
+:host([type="light"][icon="arrow_hook_up_right_32"]):before {
+  content: "\e00e";
+}
+:host([type="light"][icon="arrow_redo_32"]):before {
+  content: "\e00f";
+}
+:host([type="light"][icon="arrow_reply_32"]):before {
+  content: "\e010";
+}
+:host([type="light"][icon="arrow_reply_all_32"]):before {
+  content: "\e011";
+}
+:host([type="light"][icon="arrow_undo_32"]):before {
+  content: "\e012";
+}
+:host([type="light"][icon="attach_32"]):before {
+  content: "\e013";
+}
+:host([type="light"][icon="auto_fit_32"]):before {
+  content: "\e014";
+}
+:host([type="light"][icon="auto_fit_width_32"]):before {
+  content: "\e015";
+}
+:host([type="light"][icon="autocorrect_32"]):before {
+  content: "\e016";
+}
+:host([type="light"][icon="book_contacts_32"]):before {
+  content: "\e017";
+}
+:host([type="light"][icon="breakout_room_32"]):before {
+  content: "\e018";
+}
+:host([type="light"][icon="broom_32"]):before {
+  content: "\e019";
+}
+:host([type="light"][icon="calendar_3_day_32"]):before {
+  content: "\e01a";
+}
+:host([type="light"][icon="calendar_checkmark_32"]):before {
+  content: "\e01b";
+}
+:host([type="light"][icon="calendar_clock_32"]):before {
+  content: "\e01c";
+}
+:host([type="light"][icon="calendar_data_bar_32"]):before {
+  content: "\e01d";
+}
+:host([type="light"][icon="calendar_day_32"]):before {
+  content: "\e01e";
+}
+:host([type="light"][icon="calendar_edit_32"]):before {
+  content: "\e01f";
+}
+:host([type="light"][icon="calendar_empty_32"]):before {
+  content: "\e020";
+}
+:host([type="light"][icon="calendar_ltr_32"]):before {
+  content: "\e021";
+}
+:host([type="light"][icon="calendar_month_32"]):before {
+  content: "\e022";
+}
+:host([type="light"][icon="calendar_multiple_32"]):before {
+  content: "\e023";
+}
+:host([type="light"][icon="calendar_pattern_32"]):before {
+  content: "\e024";
+}
+:host([type="light"][icon="calendar_reply_32"]):before {
+  content: "\e025";
+}
+:host([type="light"][icon="calendar_sparkle_32"]):before {
+  content: "\e026";
+}
+:host([type="light"][icon="calendar_todo_32"]):before {
+  content: "\e027";
+}
+:host([type="light"][icon="calendar_work_week_32"]):before {
+  content: "\e028";
+}
+:host([type="light"][icon="chat_32"]):before {
+  content: "\e029";
+}
+:host([type="light"][icon="checkmark_32"]):before {
+  content: "\e02a";
+}
+:host([type="light"][icon="checkmark_circle_32"]):before {
+  content: "\e02b";
+}
+:host([type="light"][icon="classification_32"]):before {
+  content: "\e02c";
+}
+:host([type="light"][icon="clipboard_paste_32"]):before {
+  content: "\e02d";
+}
+:host([type="light"][icon="clock_32"]):before {
+  content: "\e02e";
+}
+:host([type="light"][icon="clock_alarm_32"]):before {
+  content: "\e02f";
+}
+:host([type="light"][icon="color_32"]):before {
+  content: "\e030";
+}
+:host([type="light"][icon="color_fill_32"]):before {
+  content: "\e031";
+}
+:host([type="light"][icon="color_fill_accent_32"]):before {
+  content: "\e032";
+}
+:host([type="light"][icon="comment_32"]):before {
+  content: "\e033";
+}
+:host([type="light"][icon="comment_add_32"]):before {
+  content: "\e034";
+}
+:host([type="light"][icon="compose_32"]):before {
+  content: "\e035";
+}
+:host([type="light"][icon="copy_32"]):before {
+  content: "\e036";
+}
+:host([type="light"][icon="crop_32"]):before {
+  content: "\e037";
+}
+:host([type="light"][icon="cursor_32"]):before {
+  content: "\e038";
+}
+:host([type="light"][icon="cut_32"]):before {
+  content: "\e039";
+}
+:host([type="light"][icon="delete_32"]):before {
+  content: "\e03a";
+}
+:host([type="light"][icon="dismiss_32"]):before {
+  content: "\e03b";
+}
+:host([type="light"][icon="dismiss_circle_32"]):before {
+  content: "\e03c";
+}
+:host([type="light"][icon="dismiss_square_32"]):before {
+  content: "\e03d";
+}
+:host([type="light"][icon="document_24"]):before {
+  content: "\e03e";
+}
+:host([type="light"][icon="document_28"]):before {
+  content: "\e03f";
+}
+:host([type="light"][icon="document_32"]):before {
+  content: "\e040";
+}
+:host([type="light"][icon="document_48"]):before {
+  content: "\e041";
+}
+:host([type="light"][icon="document_header_32"]):before {
+  content: "\e042";
+}
+:host([type="light"][icon="document_header_footer_32"]):before {
+  content: "\e043";
+}
+:host([type="light"][icon="documentning_32"]):before {
+  content: "\e044";
+}
+:host([type="light"][icon="document_signature_32"]):before {
+  content: "\e045";
+}
+:host([type="light"][icon="document_sparkle_24"]):before {
+  content: "\e046";
+}
+:host([type="light"][icon="document_sparkle_28"]):before {
+  content: "\e047";
+}
+:host([type="light"][icon="document_sparkle_32"]):before {
+  content: "\e048";
+}
+:host([type="light"][icon="document_sparkle_48"]):before {
+  content: "\e049";
+}
+:host([type="light"][icon="door_arrow_right_32"]):before {
+  content: "\e04a";
+}
+:host([type="light"][icon="edit_32"]):before {
+  content: "\e04b";
+}
+:host([type="light"][icon="emoji_32"]):before {
+  content: "\e04c";
+}
+:host([type="light"][icon="eye_32"]):before {
+  content: "\e04d";
+}
+:host([type="light"][icon="eye_off_32"]):before {
+  content: "\e04e";
+}
+:host([type="light"][icon="filter_32"]):before {
+  content: "\e04f";
+}
+:host([type="light"][icon="flag_32"]):before {
+  content: "\e050";
+}
+:host([type="light"][icon="flag_off_32"]):before {
+  content: "\e051";
+}
+:host([type="light"][icon="flash_32"]):before {
+  content: "\e052";
+}
+:host([type="light"][icon="folder_arrow_right_32"]):before {
+  content: "\e053";
+}
+:host([type="light"][icon="folder_mail_32"]):before {
+  content: "\e054";
+}
+:host([type="light"][icon="globe_32"]):before {
+  content: "\e055";
+}
+:host([type="light"][icon="hand_draw_32"]):before {
+  content: "\e056";
+}
+:host([type="light"][icon="history_32"]):before {
+  content: "\e057";
+}
+:host([type="light"][icon="image_add_32"]):before {
+  content: "\e058";
+}
+:host([type="light"][icon="image_alt_text_32"]):before {
+  content: "\e059";
+}
+:host([type="light"][icon="image_copy_32"]):before {
+  content: "\e05a";
+}
+:host([type="light"][icon="image_reflection_32"]):before {
+  content: "\e05b";
+}
+:host([type="light"][icon="image_shadow_32"]):before {
+  content: "\e05c";
+}
+:host([type="light"][icon="immersive_reader_32"]):before {
+  content: "\e05d";
+}
+:host([type="light"][icon="important_32"]):before {
+  content: "\e05e";
+}
+:host([type="light"][icon="lasso_32"]):before {
+  content: "\e05f";
+}
+:host([type="light"][icon="layout_column_two_32"]):before {
+  content: "\e060";
+}
+:host([type="light"][icon="layout_column_two_focus_left_32"]):before {
+  content: "\e061";
+}
+:host([type="light"][icon="layout_column_two_focus_right_32"]):before {
+  content: "\e062";
+}
+:host([type="light"][icon="layout_row_two_32"]):before {
+  content: "\e063";
+}
+:host([type="light"][icon="layout_row_two_focus_top_32"]):before {
+  content: "\e064";
+}
+:host([type="light"][icon="layout_row_two_focus_top_settings_32"]):before {
+  content: "\e065";
+}
+:host([type="light"][icon="layout_row_two_settings_32"]):before {
+  content: "\e066";
+}
+:host([type="light"][icon="lightbulb_32"]):before {
+  content: "\e067";
+}
+:host([type="light"][icon="link_32"]):before {
+  content: "\e068";
+}
+:host([type="light"][icon="lock_closed_32"]):before {
+  content: "\e069";
+}
+:host([type="light"][icon="lock_open_32"]):before {
+  content: "\e06a";
+}
+:host([type="light"][icon="mail_32"]):before {
+  content: "\e06b";
+}
+:host([type="light"][icon="mail_alert_32"]):before {
+  content: "\e06c";
+}
+:host([type="light"][icon="mail_arrow_clockwise_32"]):before {
+  content: "\e06d";
+}
+:host([type="light"][icon="mail_arrow_double_back_32"]):before {
+  content: "\e06e";
+}
+:host([type="light"][icon="mail_copy_32"]):before {
+  content: "\e06f";
+}
+:host([type="light"][icon="mail_edit_32"]):before {
+  content: "\e070";
+}
+:host([type="light"][icon="mail_list_32"]):before {
+  content: "\e071";
+}
+:host([type="light"][icon="mail_multiple_32"]):before {
+  content: "\e072";
+}
+:host([type="light"][icon="mail_read_32"]):before {
+  content: "\e073";
+}
+:host([type="light"][icon="mail_read_multiple_32"]):before {
+  content: "\e074";
+}
+:host([type="light"][icon="mail_rewind_32"]):before {
+  content: "\e075";
+}
+:host([type="light"][icon="mail_settings_32"]):before {
+  content: "\e076";
+}
+:host([type="light"][icon="mail_template_32"]):before {
+  content: "\e077";
+}
+:host([type="light"][icon="mail_unread_32"]):before {
+  content: "\e078";
+}
+:host([type="light"][icon="mail_warning_32"]):before {
+  content: "\e079";
+}
+:host([type="light"][icon="mention_32"]):before {
+  content: "\e07a";
+}
+:host([type="light"][icon="mic_32"]):before {
+  content: "\e07b";
+}
+:host([type="light"][icon="molecule_32"]):before {
+  content: "\e07c";
+}
+:host([type="light"][icon="note_32"]):before {
+  content: "\e07d";
+}
+:host([type="light"][icon="options_32"]):before {
+  content: "\e07e";
+}
+:host([type="light"][icon="paint_brush_32"]):before {
+  content: "\e07f";
+}
+:host([type="light"][icon="panel_left_default_32"]):before {
+  content: "\e080";
+}
+:host([type="light"][icon="panel_left_focus_right_32"]):before {
+  content: "\e081";
+}
+:host([type="light"][icon="pen_sparkle_32"]):before {
+  content: "\e082";
+}
+:host([type="light"][icon="people_32"]):before {
+  content: "\e083";
+}
+:host([type="light"][icon="people_add_32"]):before {
+  content: "\e084";
+}
+:host([type="light"][icon="people_checkmark_32"]):before {
+  content: "\e085";
+}
+:host([type="light"][icon="people_community_32"]):before {
+  content: "\e086";
+}
+:host([type="light"][icon="people_edit_32"]):before {
+  content: "\e087";
+}
+:host([type="light"][icon="people_list_32"]):before {
+  content: "\e088";
+}
+:host([type="light"][icon="people_lock_32"]):before {
+  content: "\e089";
+}
+:host([type="light"][icon="people_settings_32"]):before {
+  content: "\e08a";
+}
+:host([type="light"][icon="people_sync_32"]):before {
+  content: "\e08b";
+}
+:host([type="light"][icon="person_32"]):before {
+  content: "\e08c";
+}
+:host([type="light"][icon="person_add_32"]):before {
+  content: "\e08d";
+}
+:host([type="light"][icon="person_available_32"]):before {
+  content: "\e08e";
+}
+:host([type="light"][icon="person_feedback_32"]):before {
+  content: "\e08f";
+}
+:host([type="light"][icon="person_mail_32"]):before {
+  content: "\e090";
+}
+:host([type="light"][icon="person_prohibited_32"]):before {
+  content: "\e091";
+}
+:host([type="light"][icon="person_suport_32"]):before {
+  content: "\e092";
+}
+:host([type="light"][icon="phone_32"]):before {
+  content: "\e093";
+}
+:host([type="light"][icon="picture_in_picture_32"]):before {
+  content: "\e094";
+}
+:host([type="light"][icon="pin_32"]):before {
+  content: "\e095";
+}
+:host([type="light"][icon="pin_off_32"]):before {
+  content: "\e096";
+}
+:host([type="light"][icon="poll_32"]):before {
+  content: "\e097";
+}
+:host([type="light"][icon="print_32"]):before {
+  content: "\e098";
+}
+:host([type="light"][icon="question_32"]):before {
+  content: "\e099";
+}
+:host([type="light"][icon="read_aloud_32"]):before {
+  content: "\e09a";
+}
+:host([type="light"][icon="rectangle_landscape_32"]):before {
+  content: "\e09b";
+}
+:host([type="light"][icon="rotate_left_32"]):before {
+  content: "\e09c";
+}
+:host([type="light"][icon="save_32"]):before {
+  content: "\e09d";
+}
+:host([type="light"][icon="search_32"]):before {
+  content: "\e09e";
+}
+:host([type="light"][icon="search_sparkle_32"]):before {
+  content: "\e09f";
+}
+:host([type="light"][icon="send_clock_32"]):before {
+  content: "\e0a0";
+}
+:host([type="light"][icon="settings_32"]):before {
+  content: "\e0a1";
+}
+:host([type="light"][icon="share_32"]):before {
+  content: "\e0a2";
+}
+:host([type="light"][icon="shield_error_32"]):before {
+  content: "\e0a3";
+}
+:host([type="light"][icon="signature_32"]):before {
+  content: "\e0a4";
+}
+:host([type="light"][icon="speaker_mute_32"]):before {
+  content: "\e0a5";
+}
+:host([type="light"][icon="square_arrow_forward_32"]):before {
+  content: "\e0a6";
+}
+:host([type="light"][icon="stamp_32"]):before {
+  content: "\e0a7";
+}
+:host([type="light"][icon="star_add_32"]):before {
+  content: "\e0a8";
+}
+:host([type="light"][icon="star_arrow_right_32"]):before {
+  content: "\e0a9";
+}
+:host([type="light"][icon="sticker_32"]):before {
+  content: "\e0aa";
+}
+:host([type="light"][icon="tab_add_32"]):before {
+  content: "\e0ab";
+}
+:host([type="light"][icon="table_32"]):before {
+  content: "\e0ac";
+}
+:host([type="light"][icon="table_alt_text_32"]):before {
+  content: "\e0ad";
+}
+:host([type="light"][icon="table_cells_merge_32"]):before {
+  content: "\e0ae";
+}
+:host([type="light"][icon="table_cells_split_32"]):before {
+  content: "\e0af";
+}
+:host([type="light"][icon="table_dismiss_32"]):before {
+  content: "\e0b0";
+}
+:host([type="light"][icon="table_move_above_32"]):before {
+  content: "\e0b1";
+}
+:host([type="light"][icon="table_move_below_32"]):before {
+  content: "\e0b2";
+}
+:host([type="light"][icon="table_move_left_32"]):before {
+  content: "\e0b3";
+}
+:host([type="light"][icon="table_move_right_32"]):before {
+  content: "\e0b4";
+}
+:host([type="light"][icon="table_settings_32"]):before {
+  content: "\e0b5";
+}
+:host([type="light"][icon="table_simple_32"]):before {
+  content: "\e0b6";
+}
+:host([type="light"][icon="tag_32"]):before {
+  content: "\e0b7";
+}
+:host([type="light"][icon="text_32"]):before {
+  content: "\e0b8";
+}
+:host([type="light"][icon="text_clear_formatting_32"]):before {
+  content: "\e0b9";
+}
+:host([type="light"][icon="text_collapse_32"]):before {
+  content: "\e0ba";
+}
+:host([type="light"][icon="text_density_32"]):before {
+  content: "\e0bb";
+}
+:host([type="light"][icon="text_edit_style_32"]):before {
+  content: "\e0bc";
+}
+:host([type="light"][icon="text_expand_32"]):before {
+  content: "\e0bd";
+}
+:host([type="light"][icon="textbox_align_top_left_32"]):before {
+  content: "\e0be";
+}
+:host([type="light"][icon="toolbox_32"]):before {
+  content: "\e0bf";
+}
+:host([type="light"][icon="translate_32"]):before {
+  content: "\e0c0";
+}
+:host([type="light"][icon="video_32"]):before {
+  content: "\e0c1";
+}
+:host([type="light"][icon="video_clip_32"]):before {
+  content: "\e0c2";
+}
+:host([type="light"][icon="weather_moon_32"]):before {
+  content: "\e0c3";
+}
+:host([type="light"][icon="weather_sunny_32"]):before {
+  content: "\e0c4";
+}
+:host([type="light"][icon="window_32"]):before {
+  content: "\e0c5";
+}
+:host([type="light"][icon="wrench_screwdriver_32"]):before {
+  content: "\e0c6";
+}
+:host([type="light"][icon="zoom_in_32"]):before {
+  content: "\e0c7";
+}
+:host([type="light"][icon="zoom_out_32"]):before {
+  content: "\e0c8";
+}

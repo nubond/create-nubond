@@ -1,0 +1,381 @@
+<!--header-->
+<hgroup>
+    <h2>Components</h2>
+    <p>Reusable isolated components with context</p>
+</hgroup>
+
+<!--description-->
+<article class="d-flex align-items-center pico-background-cyan-500">
+    <span nb-template="@bulb-icon"></span>
+    <div class="ms-3">
+        <p class="mb-0">• <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_components" target="_blank">Web Components</a> integrated into the framework</p>
+        <p class="mb-0">• Designed to be used as reusable, isolated components</p>
+        <p class="mb-0">• Automatic change detection happens <u>only</u> when input params change</p>
+        <p class="mb-0">• Always have an HTML template, can have styles — both are isolated by <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_components" target="_blank">Web Components</a> design</p>
+        <p class="mb-0">• A drop-down, date picker or button is a good use case for a component</p>
+    </div>
+</article>
+
+<!--components & components in & out-->
+<article>
+    <div class="row">
+        <!--components-->
+        <div class="col border-end" nb-template="@mono-slot-tile">
+            <span nb-projection="@header"><span class="pico-color-green-500">components</span></span>
+            <span nb-projection="@sub-header">reusable components</span>
+            <span nb-projection="@icons">
+                <span class="border-bottom-0"
+                      nb-aspect:tooltip="@HTML is not sanitized when ITemplateProvider is used — apply your favorite sanitizer"
+                      nb-template="@error-icon">
+                </span>
+                <span class="border-bottom-0 ms-1" 
+                      nb-aspect:tooltip="@nb-value, nb-html, nb-switch, nb-container and nb-template can`t be used at the same time on the same element"
+                      nb-template="@warning-icon">
+                </span>
+            </span>
+            <div nb-projection="@content">
+                <div class="row">
+                    <div class="col">
+                        <h5 class="mb-2">HTML and CSS from strings</h5>
+                        <code class="ps-1">
+                            &lt;html-css-from-strings&gt;<br/>
+                            &lt;/html-css-from-strings&gt;
+                        </code>
+                        <html-css-from-strings></html-css-from-strings>
+                    </div>
+                    <div class="col">
+                        <h5 class="mb-2">HTML and CSS from files</h5>
+                        <code class="ps-1">
+                            &lt;html-css-from-files&gt;<br/>
+                            &lt;/html-css-from-files&gt;</code>
+                        <html-css-from-files></html-css-from-files>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col">
+                        <h5 class="mb-2">HTML and CSS from functions</h5>
+                        <code class="ps-1">
+                            &lt;html-css-from-functions&gt;<br/>
+                            &lt;/html-css-from-functions&gt;
+                        </code>
+                        <html-css-from-functions></html-css-from-functions>
+                    </div>
+                    <div class="col">
+                        <h5 class="mb-2">HTML and CSS from promises</h5>
+                        <code class="ps-1">
+                            &lt;html-css-from-promises&gt;<br/>
+                            &lt;/html-css-from-promises&gt;
+                        </code>
+                        <html-css-from-promises></html-css-from-promises>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--component in & out-->
+        <div class="col">
+            <!--component in & out-->
+            <div class="row">
+                <div class="col" nb-template="@mono-slot-tile">
+                    <span nb-projection="@header"><span class="pico-color-green-500">in</span> & <span class="pico-color-green-500">out</span></span>
+                    <span nb-projection="@sub-header">input & output bindings</span>
+                    <span nb-projection="@icons">
+                        <span class="border-bottom-0" 
+                              nb-aspect:tooltip="{text: 'Component change detection will be triggered automatically only when input parameters (nb-in:xxx) values are changed', placement: 'left'}"
+                              nb-template="@warning-icon">
+                        </span>
+                    </span>
+                    <div nb-projection="@content">
+                        <h5 class="mb-2">Continuous binding</h5>
+                        <code class="ps-1">
+                            nb-in:input="this.inOutComponentInput"<span class="pico-color-green-500">*</span><br/>
+                            nb-event:output="this.inOutComponentOutput = data"
+                        </code>
+                        <in-out class="mb-2" nb-in:input="this.inOutComponentInput" 
+                                             nb-event:output="this.inOutComponentOutput = data">
+                        </in-out>
+                        <p>Clicks inside component: <span nb-value="this.inOutComponentOutput"></span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</article>
+
+<!--components projections-->
+<article nb-template="@mono-slot-tile">
+    <span nb-projection="@header">nb-<span class="pico-color-green-500">projection</span>&nbsp;&&nbsp;(nb-<span class="pico-color-green-500">project-to</span>&nbsp;/&nbsp;nb-<span class="pico-color-green-500">project-instead</span>)</span>
+    <span nb-projection="@sub-header">projections</span>
+    <div class="row" nb-projection="@content">
+        <!--default projection-->
+        <div class="col">
+            <h5 class="mb-2">Default projection</h5>
+            <code class="ps-1">
+                <strong>Component declaration</strong><br/>
+                &lt;default-projection&gt;<br/>
+                    &nbsp;&lt;em <span class="pico-color-green-500">nb-projection</span>&gt;<br/>
+                    &nbsp;&nbsp;&nbsp;Element is projected in component<br/>
+                    &nbsp;&lt;/em&gt;<br/>
+                &lt;/default-projection&gt;<br/><br/>
+                <strong>Component template</strong><br/>
+                &lt;p <span class="pico-color-green-500">nb-project-to</span>&gt;&lt;/p&gt;
+            </code>
+            <default-projection>
+                <em nb-projection>Element is projected in component</em>
+            </default-projection>
+        </div>
+        <!--multi-slot projection-->
+        <div class="col">
+            <h5 class="mb-2">Multi-slot projection</h5>
+            <code class="ps-1">
+                <strong>Component declaration</strong><br/>
+                &lt;multi-slot-projection&gt;<br/>
+                    &nbsp;&lt;em <span class="pico-color-green-500">nb-projection="@slot1"</span>&gt;<br/>
+                    &nbsp;&nbsp;&nbsp;Element is projected to component's slot 1<br/>
+                    &nbsp;&lt;/em&gt;<br/>
+                    &nbsp;&lt;em <span class="pico-color-green-500">nb-projection="@slot2"</span>&gt;<br/>
+                    &nbsp;&nbsp;&nbsp;Element is projected instead of component's slot 2<br/>
+                    &nbsp;&lt;/em&gt;<br/>
+                &lt;/multi-slot-projection&gt;<br/><br/>
+                <strong>Component template</strong><br/>
+                &lt;p <span class="pico-color-green-500">nb-project-to="@slot1"</span>&gt;&lt;/p&gt;<br/>
+                &lt;p <span class="pico-color-green-500">nb-project-instead="@slot2"</span>&gt;&lt;/p&gt;
+            </code>
+            <multi-slot-projection>
+                <em nb-projection="@slot1">Element is projected to component's slot 1</em>
+                <em nb-projection="@slot2">Element is projected instead of component's slot 2</em>
+            </multi-slot-projection>
+        </div>
+    </div>
+</article>
+
+<hr />
+
+<!--component decorator-->
+<article>
+    <div class="row">
+        <div class="col">
+            <div class="d-flex align-items-baseline">
+                <h2 class="mb-0"><span class="pico-color-green-500">@Component</span></h2>
+                <h2 class="mb-0">&nbsp;|&nbsp;</h2>
+                <h4 class="mb-0">component decorator</h4>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col">
+                    <h5 class="mb-2"></h5>
+                    <code class="ps-1">
+                        function Component<T extends IComponentContextConstructor>(htmlTemplateOrPathOrProviderWithOrWithoutName: string | ITemplateProvider | [string, string | ITemplateProvider],<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        ...componentBootstrapMetaData: Array&lt;CustomElementConstructor | string | ITemplateProvider |<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        Array&lt;string&gt; | IComponentContextConfig | IEntityDependencyConstructor&gt;) {<br/>}
+                    </code>
+                    Parameters:<br/>
+                    <strong>htmlTemplateOrPathOrProviderWithOrWithoutName: string | ITemplateProvider | [string, string | ITemplateProvider]</strong><br/>
+                    • <strong>string</strong>: path to HTML template<br/>
+                    <em>Example:</em>
+                    <code class="ps-1">
+                        '/src/page.html'
+                    </code>
+                    • <strong>ITemplateProvider</strong>: a provider to get the HTML template<br/>
+                    <em>ITemplateProvider interface:</em>
+                    <code class="ps-1">
+                        interface ITemplateProvider {<br/>
+                        &nbsp;&nbsp;<strong>get()</strong>: string | Promise<string>;<br/>
+                        }
+                    </code>
+                    <em>Example:</em>
+                    <code class="ps-1">
+                        <em>string result:</em><br/>
+                        {<br/>
+                        &nbsp;&nbsp;get: () => 'HTML TEMPLATE'<br/>
+                        }<br/>
+                        <br/>
+                        <em>Promise result:</em><br/>
+                        {<br/>
+                        &nbsp;&nbsp;get: () => new Promise((resolve, reject) => {<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;resolve('HTML TEMPLATE');<br/>
+                        &nbsp;&nbsp;})<br/>
+                        }
+                    </code>
+                    • <strong>[string, string | ITemplateProvider]</strong>:
+                    <code class="ps-1">
+                        <strong>string</strong>: component name<br/>
+                        <strong>string | ITemplateProvider</strong>: path to HTML template or a provider to get the HTML template<br/>
+                    </code>
+                    <em>Example:</em><br/>
+                        <code class="ps-1">
+                            ['component-name', '/src/component.html']
+                        </code>
+                    <strong>...componentBootstrapMetaData: Array&lt;CustomElementConstructor | string | ITemplateProvider | Array&lt;string&gt; | IComponentContextConfig | IEntityDependencyConstructor&gt;</strong><br/>
+                    • <strong>CustomElementConstructor</strong>: web component element class that is extending HTMLElement<br/>
+                    <em>Example:</em>
+                    <code class="ps-1">
+                        class extends HTMLElement {<br/>
+                        &nbsp;&nbsp;value = 1;<br/>
+                        }
+                    </code>
+                    • <strong>string</strong>: path to style template<br/>
+                    <em>Example:</em>
+                    <code class="ps-1">
+                        '/src/page.css'
+                    </code>
+                    • <strong>ITemplateProvider</strong>: a provider to get the style template<br/>
+                    <em>ITemplateProvider interface:</em>
+                    <code class="ps-1">
+                        interface ITemplateProvider {<br/>
+                        &nbsp;&nbsp;<strong>get()</strong>: string | Promise<string>;<br/>
+                        }
+                    </code>
+                    <em>Example:</em>
+                    <code class="ps-1">
+                        <em>string result:</em><br/>
+                        {<br/>
+                        &nbsp;&nbsp;get: () => 'STYLE TEMPLATE'<br/>
+                        }<br/>
+                        <br/>
+                        <em>Promise result:</em><br/>
+                        {<br/>
+                        &nbsp;&nbsp;get: () => new Promise((resolve, reject) => {<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;resolve('STYLE TEMPLATE');<br/>
+                        &nbsp;&nbsp;})<br/>
+                        }
+                    </code>
+                    • <strong>IComponentContextConfig</strong>: component context (decorated class) configuration<br/>
+                    <em>IComponentContextConfig interface:</em>
+                    <code class="ps-1">
+                        interface IComponentContextConfig {<br/>
+                        &nbsp;&nbsp;<span class="pico-color-green-700">//context-specific change detection strategy. By default global change detection strategy value will be used, if configured. Default value: false.</span><br/>
+                        &nbsp;&nbsp;<strong>pessimisticChangeDetectionStrategy</strong>?: boolean;<br/>
+
+                        &nbsp;&nbsp;<span class="pico-color-green-700">//context-specific htmlSanitizer. By default global htmlSanitizer value will be used, if configured</span><br/>
+                        &nbsp;&nbsp;<strong>htmlSanitizer</strong>?: (html: string) => string;<br/>
+                        
+                        &nbsp;&nbsp;<span class="pico-color-green-700">//context-specific styleSanitizer. By default global styleSanitizer value will be used, if configured</span><br/>
+                        &nbsp;&nbsp;<strong>styleSanitizer</strong>?: (style: string) => string;<br/>
+                        }
+                    </code>
+                    <em>Example:</em>
+                    <code class="ps-1">
+                        {<br/>
+                        &nbsp;&nbsp;pessimisticChangeDetectionStrategy: true,<br/>
+                        &nbsp;&nbsp;htmlSanitizer: html => html,<br/>
+                        &nbsp;&nbsp;styleSanitizer: style => style<br/>
+                        }
+                    </code>
+                    • <strong>Array&lt;string&gt;</strong>: adopted styles names<br/>
+                    <em>Example:</em>
+                    <code class="ps-1">
+                        ['tooltip', 'buttons']
+                    </code>
+                    • <strong>IEntityDependencyConstructor</strong>: dependencies (containers, components, aspects, transformers or injectables) used in component or in child entities<br/>
+                    <em>IEntityDependencyConstructor type:</em>
+                    <code class="ps-1">
+                        IContextConstructor | IComponentContextConstructor |<br/>
+                        IAspectContextConstructor | ITransformerContextConstructor | IInjectableConstructor
+                    </code>
+                </div>
+            </div>
+        </div>
+    </div>
+</article>
+
+<!--component context-->
+<article nb-template="@mono-slot-tile">
+    <span class="pico-color-green-500" nb-projection="@header">IComponentContext</span>
+    <span nb-projection="@sub-header">component context interface</span>
+    <div nb-projection="@content">
+        <em>IComponentContext interface:</em>
+        <code class="ps-1">
+            interface IComponentContext {<br/>
+            &nbsp;&nbsp;<span class="pico-color-green-700">//Invoked when container is attached</span><br/>
+            &nbsp;&nbsp;<strong>onContainerAttached</strong>?: (context: IContext) => void;<br/>
+
+            &nbsp;&nbsp;<span class="pico-color-green-700">//Invoked when container is detached</span><br/>
+            &nbsp;&nbsp;<strong>onContainerDetached</strong>?: (context: IContext) => void;<br/>
+
+            &nbsp;&nbsp;<span class="pico-color-green-700">//Invoked when all inputs are refreshed</span><br/>
+            &nbsp;&nbsp;<strong>onInputsRefreshDone</strong>?: () => void;<br/>
+
+            &nbsp;&nbsp;<span class="pico-color-green-700">//Invoked when change detection is completed</span><br/>
+            &nbsp;&nbsp;<strong>onDetectChangesDone</strong>?: () => void;<br/>
+
+            &nbsp;&nbsp;<span class="pico-color-green-700">//Invoked when context is disposed</span><br/>
+            &nbsp;&nbsp;<strong>onDispose</strong>?: () => void;<br/>
+            }
+        </code>
+        <em>Example:</em>
+        <code class="ps-1">
+            @Component(html, css)<br/>
+            export class HtmlCssFromFiles {<br/>
+            &nbsp;&nbsp;public onDispose(): void {<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;console.log('Component HtmlCssFromFiles disposed');<br/>
+            &nbsp;&nbsp;}<br/>
+            }
+        </code>
+    </div>
+</article>
+
+<!--$AdoptedStyle decorator-->
+<article nb-template="@mono-slot-tile">
+    <span class="pico-color-green-500" nb-projection="@header">$AdoptedStyle</span>
+    <span nb-projection="@sub-header">define <a href="https://developer.mozilla.org/en-US/docs/Web/API/ShadowRoot/adoptedStyleSheets" target="_blank">adopted style</a> function</span>
+    <div nb-projection="@content">
+        <h5 class="mb-2"></h5>
+        <code class="ps-1 pe-0">
+            function $AdoptedStyle(name: string, styleTemplateOrPathOrProvider: string | ITemplateProvider,<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            styleSanitizer?: (style: string) => string) {<br/>}
+        </code>
+        Parameters:<br/>
+        <strong>name: string</strong>: adopted style name<br/>
+        <em>Example:</em>
+        <code class="ps-1">
+            'test'
+        </code>
+
+        <strong>styleTemplateOrPathOrProvider: string | ITemplateProvider</strong><br/>
+        • <strong>string</strong>: path to style template<br/>
+        <em>Example:</em>
+        <code class="ps-1">
+            '/src/page.css'
+        </code>
+        • <strong>ITemplateProvider</strong>: a provider to get style template<br/>
+        <em>ITemplateProvider interface:</em>
+        <code class="ps-1">
+            interface ITemplateProvider {<br/>
+            &nbsp;&nbsp;<strong>get()</strong>: string | Promise<string>;<br/>
+            }
+        </code>
+        <em>Example:</em>
+        <code class="ps-1">
+            <em>string result:</em><br/>
+            {<br/>
+            &nbsp;&nbsp;get: () => 'STYLE TEMPLATE'<br/>
+            }<br/>
+            <br/>
+            <em>Promise result:</em><br/>
+            {<br/>
+            &nbsp;&nbsp;get: () => new Promise((resolve, reject) => {<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;resolve('STYLE TEMPLATE');<br/>
+            &nbsp;&nbsp;})<br/>
+            }
+        </code>
+
+        • <strong>styleSanitizer?: (style: string) => string</strong>: style-template-specific styleSanitizer. By default global styleSanitizer value will be used, if configured<br/>
+        <em>Example:</em>
+        <code class="ps-1">
+            style => style
+        </code>
+    </div>
+</article>
