@@ -63,7 +63,7 @@ Every template comes with:
   | Script | Alias | Generates |
   |---|---|---|
   | `npm run add-component` | `acomp` | A `@Component` with a `.ts` / `.html` / `.scss` triplet |
-  | `npm run add-container` | `acont` | A `@Container` |
+  | `npm run add-container` | `acont` | A `@Container` with a `.ts` / `.html` pair |
   | `npm run add-aspect` | `aasp` | An `@Aspect` |
   | `npm run add-transformer` | `atran` | A `@Transformer` |
   | `npm run add-injectable` | `ainj` | An `@Injectable` service |
