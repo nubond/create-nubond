@@ -50,14 +50,14 @@ If you omit the template, the CLI prints the list of available templates and exi
 | Template | What you get |
 |---|---|
 | `blank` | Minimal nuBond + Parcel + TypeScript setup. Nothing but the framework and the build pipeline — perfect starting point for a custom app. |
-| `native` | Same as `blank`, plus [`@fluentui/web-components`](https://www.npmjs.com/package/@fluentui/web-components) and Fluent UI tokens pre-wired for native-feeling UIs. |
+| `native` | Same as `blank`, plus [`@fluentui/web-components`](https://github.com/microsoft/fluentui/tree/master) and Fluent UI tokens pre-wired for native-feeling UIs. |
 | `showcase` | Full demo app showing routing, containers, components, aspects, transformers, dependency injection, expression prefixes, and more. |
 
 Every template comes with:
 
 - Parcel dev server and production build (`npm start` / `npm run build`).
 - TypeScript with decorators enabled for `@Container`, `@Component`, `@Aspect`, `@Transformer`, `@Injectable`, `@Detector`, `@Eventer`.
-- [`@nubond/posthtml-value-interpolation`](https://www.npmjs.com/package/@nubond/posthtml-value-interpolation) so you can use `{{ expression }}` directly inside HTML templates.
+- [`@nubond/posthtml-value-interpolation`](https://github.com/nubond/posthtml-value-interpolation) so you can use `{{ expression }}` directly inside HTML templates.
 - Entity generators wired as npm scripts:
 
   | Script | Alias | Generates |
