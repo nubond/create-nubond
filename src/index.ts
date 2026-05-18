@@ -6,7 +6,11 @@ import { parseArgs, styleText, InspectColor } from 'util';
 
 function spawn(command: string, args: readonly string[], options: SpawnOptions): Promise<void> {
     return new Promise((resolve, reject) => {
-        _spawn(`${command} ${args.join(' ')}`, {...options, shell: process.platform === 'win32'}).on('close', (code, signal) => {
+        const child = _spawn(`${command} ${args.join(' ')}`, { shell: process.platform === 'win32', ...options });
+        child.on('error', err => {
+            reject(err);
+        });
+        child.on('close', (code, signal) => {
             if (code || signal) {
                 reject(new Error(`${command} failed with exit code ${code}`));
             } else {
@@ -136,7 +140,7 @@ function main(args: Array<string>): Promise<Array<string>> {
                 break;
         }
 
-        await spawn('git', ['add', '-A'], { cwd: name });
+        await spawn('git', ['add', '-A'], { cwd: name, stdio: 'inherit' });
         await spawn('git', ['commit', '--quiet', '-a', '-m', '"Initial commit"'], { cwd: name, stdio: 'inherit' });
 
         resolve([
