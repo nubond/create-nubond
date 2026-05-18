@@ -64,7 +64,7 @@ function main(args: Array<string>): Promise<Array<string>> {
         const errorSymbol: string = supportsEmoji ? '🚨' : '×';
 
         const templateRootDir = path.join(__dirname, '..', 'templates');
-        const availableTemplates = (await fs.readdir(templateRootDir)).filter(el => !el.startsWith('#'));
+        const availableTemplates = await fs.readdir(templateRootDir);
 
         const template = args[0];
         const name = args[1] || '.';
@@ -73,7 +73,7 @@ function main(args: Array<string>): Promise<Array<string>> {
             reject([
                 `Usage: ${packageManagerName} create <template> [directory]`,
                 'Available templates:',
-                ...availableTemplates.map(el => `  • ${el}`)
+                ...availableTemplates.filter(el => !el.startsWith('#')).map(el => `  • ${el}`)
             ]);
             return;
         }
@@ -86,7 +86,7 @@ function main(args: Array<string>): Promise<Array<string>> {
             reject([
                 getStyled(['red', 'bold'], `${errorSymbol} Unknown template ${template}.`),
                 'Available templates:',
-                ...availableTemplates.map(el => `  • ${el}`)
+                ...availableTemplates.filter(el => !el.startsWith('#')).map(el => `  • ${el}`)
             ]);
             return;
         }
@@ -113,6 +113,8 @@ function main(args: Array<string>): Promise<Array<string>> {
 
         await fs.cp(templateDir, name, { recursive: true });
 
+        await fs.rename(path.join(name, 'gitignore'), path.join(name, '.gitignore'));
+
         try {
             for (const file of await getDirectoryFiles(name)) {
                 const fileContent = await fs.readFile(file, { encoding: 'utf8' });
@@ -136,7 +138,7 @@ function main(args: Array<string>): Promise<Array<string>> {
                 break;
             case 'npm':
             default:
-                await spawn('npm', ['install', '--legacy-peer-deps', '--no-audit', '--no-fund'], { cwd: name, stdio: 'inherit' });
+                await spawn('npm', ['install', '--no-audit', '--no-fund'], { cwd: name, stdio: 'inherit' });
                 break;
         }
 
