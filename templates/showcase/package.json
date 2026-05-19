@@ -23,12 +23,12 @@
     "@parcel/transformer-typescript-tsc": "^2.16.1",
     "parcel": "^2.16.1",
     "posthtml": "^0.16.7",
-    "@nubond/posthtml-value-interpolation": "^1.0.0"
+    "@nubond/posthtml-value-interpolation": "^1.0.2"
   },
   "dependencies": {
     "@picocss/pico": "^2.1.1",
     "animate.css": "^4.1.1",
     "bootstrap": "^5.3.8",
-    "nubond": "^1.0.3"
+    "nubond": "^1.0.6"
   }
 }

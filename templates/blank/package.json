@@ -31,9 +31,9 @@
     "parcel": "^2.16.1",
     "parcel-reporter-static-files-copy": "^1.5.3",
     "posthtml": "^0.16.7",
-    "@nubond/posthtml-value-interpolation": "^1.0.0"
+    "@nubond/posthtml-value-interpolation": "^1.0.2"
   },
   "dependencies": {
-    "nubond": "^1.0.3"
+    "nubond": "^1.0.6"
   }
 }

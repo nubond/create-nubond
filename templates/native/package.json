@@ -31,11 +31,11 @@
     "parcel": "^2.16.1",
     "parcel-reporter-static-files-copy": "^1.5.3",
     "posthtml": "^0.16.7",
-    "@nubond/posthtml-value-interpolation": "^1.0.0"
+    "@nubond/posthtml-value-interpolation": "^1.0.2"
   },
   "dependencies": {
     "@fluentui/tokens": "^1.0.0-alpha.23",
     "@fluentui/web-components": "^3.0.0-rc.6",
-    "nubond": "^1.0.3"
+    "nubond": "^1.0.6"
   }
 }
