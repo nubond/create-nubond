@@ -1,6 +1,6 @@
 # {APP_NAME}
 
-A [nuBond](https://github.com/nubond/nubond) single-page application scaffolded from the **native** template of [`create-nubond-app`](https://www.npmjs.com/package/create-nubond-app). The template builds on the **blank** preset and adds an opinionated, native-feeling UI layer:
+A [nuBond](https://github.com/nubond/nubond) single-page application scaffolded from the **native** template of [`create-nubond`](https://www.npmjs.com/package/create-nubond). The template builds on the **blank** preset and adds an opinionated, native-feeling UI layer:
 
 - [Microsoft Fluent UI Web Components](https://github.com/microsoft/fluentui) (`@fluentui/web-components` + `@fluentui/tokens`)
 - A `FluentIcon` component backed by four bundled Fluent icon-font weights (filled / light / regular / resizable, ~70 000 glyph rules)
@@ -22,7 +22,7 @@ npm run build      # production build into ./dist
 
 `prestart` / `prebuild` wipe `dist/` and `.parcel-cache/` before each run via `package-cli.js`.
 
-> `create-nubond-app` already installed dependencies and made an initial git commit — you can `npm start` immediately.
+> `create-nubond` already installed dependencies and made an initial git commit — you can `npm start` immediately.
 
 ---
 
@@ -39,7 +39,7 @@ npm run build      # production build into ./dist
 | HTML / styles as strings | `@parcel/transformer-inline-string` — enables `import html from './x.html'` and `import css from './x.scss'` |
 | Interpolation | `posthtml` + `@nubond/posthtml-value-interpolation` (configured via `.posthtmlrc`) for `{{ … }}` expressions in templates |
 | Minifier | Terser, with `keep_classnames: true` (see `.terserrc`) so nuBond's decorator-driven class registration survives production builds |
-| Static assets | `parcel-reporter-static-files-copy` copies `version` and `assets/favicon.ico` into `dist/` |
+| Static assets | `parcel-reporter-static-files-copy` copies `assets/favicon.ico` into `dist/` |
 
 ---
 

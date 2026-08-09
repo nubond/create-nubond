@@ -144,12 +144,8 @@
                 <em>ElementSubscriptions class:</em>
                 <code class="ps-1">
                     class ElementSubscriptions {<br/>
-                    &nbsp;&nbsp;<span class="pico-color-green-700">//check if subscribed to an event</span><br/>
-                    &nbsp;&nbsp;isSubscribed(eventName: string): boolean;<br/>
-                    &nbsp;&nbsp;<span class="pico-color-green-700">//check if unsubscribed from an event after a previous subscription</span><br/>
-                    &nbsp;&nbsp;isUnSubscribed(eventName: string): boolean;<br/>
-                    &nbsp;&nbsp;<span class="pico-color-green-700">//subscribe to an event; returns an unsubscribe function</span><br/>
-                    &nbsp;&nbsp;subscribe(eventName: string, callBack: { (evt: Event): any }, options?: boolean | AddEventListenerOptions): (() => void);<br/>
+                    &nbsp;&nbsp;<span class="pico-color-green-700">//subscribe to an event; returns the unsubscribe function of this subscription</span><br/>
+                    &nbsp;&nbsp;subscribe(eventName: string, callBack: { (evt: Event): any }, options?: boolean | AddEventListenerOptions, debounce?: number): (() => void);<br/>
                     }
                 </code>
                 <em>Example:</em>

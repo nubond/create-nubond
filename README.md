@@ -21,7 +21,7 @@ npm create nubond <template> [directory]
 The scaffolder will:
 
 1. Initialize a git repository in the target directory.
-2. Creates chosen template updated to match your project name.
+2. Copy the chosen template, with names updated to match your project.
 3. Install dependencies with the package manager that invoked it (`npm`, `yarn`, or `pnpm`).
 4. Create an initial commit so you start with a clean history.
 

@@ -1,6 +1,6 @@
 # {APP_NAME}
 
-A [nuBond](https://github.com/nubond/nubond) single-page application scaffolded from the **blank** template of [`create-nubond-app`](https://www.npmjs.com/package/create-nubond-app). The template gives you a minimal, batteries-included starting point: a Parcel build, a TypeScript + SCSS toolchain, the nuBond runtime, a router-driven entry page, and a small CLI for generating framework entities (containers, components, aspects, transformers, injectables).
+A [nuBond](https://github.com/nubond/nubond) single-page application scaffolded from the **blank** template of [`create-nubond`](https://www.npmjs.com/package/create-nubond). The template gives you a minimal, batteries-included starting point: a Parcel build, a TypeScript + SCSS toolchain, the nuBond runtime, a router-driven entry page, and a small CLI for generating framework entities (containers, components, aspects, transformers, injectables).
 
 ---
 
@@ -13,7 +13,7 @@ npm run build      # production build into ./dist
 
 The dev server is served by Parcel from `src/index.html`. The `prestart`/`prebuild` hooks wipe `dist/` and `.parcel-cache/` first so you always start from a clean slate.
 
-> The first run after `create-nubond-app` already installed dependencies and made an initial git commit — you can `npm start` immediately.
+> The first run after `create-nubond` already installed dependencies and made an initial git commit — you can `npm start` immediately.
 
 ---
 

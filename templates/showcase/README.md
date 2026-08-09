@@ -20,7 +20,7 @@ The dev server entry point is `src/index.html` (declared in `package.json` → `
 
 ## What is demonstrated
 
-The application is one `@AppRoot` (`PlaygroundApp` in `src/index.ts`) bound to a hash-based route `'/#{tab=basics}'`. Each tab is wired into the root by `nb-container="%tab"` and shows a slice of the framework:
+The application is one `@AppRoot` (`App` in `src/index.ts`) bound to a hash-based route `'/#[tab=basics]'`. Each tab is wired into the root by `nb-container="%tab"` and shows a slice of the framework:
 
 | Tab | File | Demonstrates |
 |---|---|---|
@@ -33,7 +33,6 @@ The application is one `@AppRoot` (`PlaygroundApp` in `src/index.ts`) bound to a
 | **Execution Expressions** | `src/pages/execution-expressions/` | Expression prefixes: continuous (none), one-time (`#`), constant literal (`@`), route slot (`%`). Includes a custom `Out` component. |
 | **Integrations** | `src/pages/integrations/` | Parcel-specific concerns: html / css imports, reserved file names, `ref:` named pipeline, and `{{ }}` text interpolation provided by `@nubond/posthtml-value-interpolation`. |
 
-> The `Integrations` page is *registered* in `src/index.ts` but is not currently passed into the `@AppRoot` decorator — to enable it, add `Integrations` to the decorator arg list.
 
 ---
 
@@ -46,9 +45,9 @@ showcase/
 ├── parcel.d.ts             module declarations for *.html / *.scss imports (with reserved names blocked)
 ├── tsconfig.json           experimentalDecorators + emitDecoratorMetadata required by nuBond DI
 └── src/
-    ├── index.html          shell — pico.css + bootstrap-utilities + index.scss, mounts <main nb-aspect:some-aspect>
+    ├── index.html          shell — pico.css + bootstrap-utilities + index.scss, mounts <main nb-container="%tab">
     ├── index.scss          global styles (header, code blocks, tooltip animation tweaks)
-    ├── index.ts            @AppRoot host (PlaygroundApp), registers all tabs + shared aspect + shared transformer
+    ├── index.ts            @AppRoot host (App), registers all tabs + shared aspect + shared transformer
     ├── pages/
     │   ├── base-tick-entity.ts    every 1s flips a semaphore and rolls a random 0-99 — drives the live demos
     │   ├── base-tab-container.ts  base class for every tab; bridges to ChangeDetector and exposes forceChangeDetection
