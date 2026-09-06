@@ -5,9 +5,9 @@
     "languageService": true
   },
   "scripts": {
-    "prestart": "node package-cli.js %ROOT_CWD% remove-directory dist,.parcel-cache",
+    "prestart": "node package-cli.js %ROOT_CWD% remove-directory dist",
     "start": "parcel",
-    "prebuild": "node package-cli.js %ROOT_CWD% remove-directory dist,.parcel-cache",
+    "prebuild": "node package-cli.js %ROOT_CWD% remove-directory dist",
     "build": "parcel build",
     "add-component": "node package-cli.js %INIT_CWD% add-component scss",
     "acomp": "node package-cli.js %INIT_CWD% add-component scss",
