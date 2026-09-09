@@ -37,6 +37,6 @@
     "posthtml": "^0.16.7"
   },
   "dependencies": {
-    "nubond": "^1.0.7"
+    "nubond": "^1.0.8"
   }
 }

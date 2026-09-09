@@ -39,6 +39,6 @@
   "dependencies": {
     "@fluentui/tokens": "^1.0.0-alpha.23",
     "@fluentui/web-components": "^3.0.0-rc.6",
-    "nubond": "^1.0.7"
+    "nubond": "^1.0.8"
   }
 }

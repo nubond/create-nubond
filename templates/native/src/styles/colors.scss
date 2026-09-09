@@ -88,8 +88,14 @@ html {
   --text-color: var(--black);
   --text-color-rgb: var(--black-rgb);
 
-  --background-color-transparent-rgba: var(--black-rgb), .1;
-  --background-color-transparent-dark-rgba: var(--black-rgb), .05;
+  --control-background-color-rgb: var(--black-rgb);
+  --control-background-invert-color-rgb: var(--white-rgb);
+
+  --control-background-color-rgba: var(--control-background-color-rgb), .1;
+  --control-background-color-dark-rgba: var(--control-background-color-rgb), .05;
+
+  --control-background-invert-color-rgba: var(--control-background-invert-color-rgb), .1;
+  --control-background-invert-color-dark-rgba: var(--control-background-invert-color-rgb), .05;
 
   @media (prefers-color-scheme: dark) {
     --background-color: var(--black);
@@ -98,7 +104,7 @@ html {
     --text-color: var(--white);
     --text-color-rgb: var(--white-rgb);
 
-    --background-color-transparent-rgba: var(--white-rgb), .1;
-    --background-color-transparent-dark-rgba: var(--white-rgb), .05;
+    --control-background-color-rgb: var(--white-rgb);
+    --control-background-invert-color-rgb: var(--black-rgb);
   }
 }
