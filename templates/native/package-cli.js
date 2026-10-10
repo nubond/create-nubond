@@ -1,5 +1,15 @@
 //constants
-const ROOT_CWD = '%ROOT_CWD%';
+// Where to work, as the first argument. These are tokens the script resolves
+// itself rather than shell variables, because npm runs scripts through cmd.exe
+// on Windows and sh elsewhere, and the two disagree on how a variable is
+// written: `%INIT_CWD%` expanded under cmd.exe and reached the script
+// literally under sh, so on macOS every scaffold tried to write into a
+// directory named `%INIT_CWD%`. npm sets `INIT_CWD` in the environment on
+// every platform, so reading it from there needs no shell at all.
+const INIT_CWD = '--init-cwd'; // the directory npm was invoked from
+const ROOT_CWD = '--root-cwd'; // the package root, where npm runs the script
+const LEGACY_INIT_CWD = '%INIT_CWD%'; // the cmd.exe placeholders an older
+const LEGACY_ROOT_CWD = '%ROOT_CWD%'; // package.json passed, still accepted
 const RESERVED_ENTITY_NAMES = ['index', 'app'];
 const RESERVED_ENTITY_NAMES_EXTENSIONS = ['htm', 'html', 'xhtml', 'styl', 'stylus', 'sass', 'scss', 'less', 'css', 'pcss', 'sss'];
 
@@ -96,6 +106,19 @@ function removeFile(fs, path, rootDirectory, fileName) {
     }
 }
 
+function resolveRootDirectory(argument) {
+    switch (argument) {
+        case INIT_CWD:
+        case LEGACY_INIT_CWD:
+            return process.env.INIT_CWD || process.cwd();
+        case ROOT_CWD:
+        case LEGACY_ROOT_CWD:
+            return process.cwd();
+        default:
+            return argument;
+    }
+}
+
 async function readline(text) {
     const readline = require('readline').createInterface({ input: process.stdin, output: process.stdout });
     return new Promise((resolve) => {
@@ -107,14 +130,11 @@ async function readline(text) {
 };
 
 async function main(argv) {
-    if (argv.length >= 3) {
+    if (argv.length >= 4) {
         const fs = require('fs');
         const path = require('path');
 
-        let rootDirectory = (argv[2] === ROOT_CWD ? process.cwd() : argv[2]);
-        if (rootDirectory.lastIndexOf('/') == rootDirectory.length - 1) {
-            rootDirectory = rootDirectory.substring(0, rootDirectory.length - 1);
-        }
+        const rootDirectory = path.resolve(resolveRootDirectory(argv[2]));
 
         const commandType = argv[3].toLowerCase();
         let entityName = argv[commandType == ADD_COMPONENT_COMMAND ? 5 : 4];
@@ -137,6 +157,18 @@ async function main(argv) {
                 case ADD_COMPONENT_COMMAND:
                 case REMOVE_COMPONENT_COMMAND:
                     prompt = 'Enter component name: ';
+                    break;
+                case ADD_ASPECT_COMMAND:
+                case REMOVE_ASPECT_COMMAND:
+                    prompt = 'Enter aspect name: ';
+                    break;
+                case ADD_TRANSFORMER_COMMAND:
+                case REMOVE_TRANSFORMER_COMMAND:
+                    prompt = 'Enter transformer name: ';
+                    break;
+                case ADD_INJECTABLE_COMMAND:
+                case REMOVE_INJECTABLE_COMMAND:
+                    prompt = 'Enter injectable name: ';
                     break;
 
                 case REMOVE_FILE_COMMAND:
@@ -169,7 +201,7 @@ async function main(argv) {
             case ADD_CONTAINER_COMMAND:
                 const containerName = fromCamelToKebabCase(entityName);
                 if (RESERVED_ENTITY_NAMES.indexOf(containerName) < 0) {
-                    addDirectoryWitFiles(fs, path, rootDirectory, containerName, [
+                    addDirectoryWithFiles(fs, path, rootDirectory, containerName, [
                         {
                             name: `${containerName}.html`,
                             data: ''
@@ -258,7 +290,7 @@ export class ${fromCamelToPascalCase(entityName)} {
 
             case REMOVE_FILE_COMMAND:
                 for (const subEntity of entityName.split(',')) {
-                    removeFile(fs, path, rootDirectory, entityName.trim());
+                    removeFile(fs, path, rootDirectory, subEntity.trim());
                 }
                 break;
             case REMOVE_DIRECTORY_COMMAND:
@@ -268,7 +300,7 @@ export class ${fromCamelToPascalCase(entityName)} {
                 break;
         }
     } else {
-        logError('Root directory and/or command type are not provided, specify %INIT_CWD% as first argument and command type as the second');
+        logError(`Root directory and/or command type are not provided, specify ${INIT_CWD}, ${ROOT_CWD} or a path as the first argument and the command type as the second`);
     }
 }
 

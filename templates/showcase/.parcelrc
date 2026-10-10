@@ -3,7 +3,7 @@
   "transformers": {
     "ref:*.{htm,html,xhtml}": ["@parcel/transformer-posthtml", "@parcel/transformer-html"],
     "{index,app}.{htm,html,xhtml}": ["@parcel/transformer-posthtml", "@parcel/transformer-html"],
-    "*.{htm,html,xhtml}": ["@parcel/transformer-posthtml", "@parcel/transformer-inline-string"],
+    "*.{htm,html,xhtml}": ["@parcel/transformer-posthtml", "@parcel/transformer-html", "@parcel/transformer-inline-string"],
 
 
     "ref:*.{styl,stylus}": ["@parcel/transformer-stylus"],
@@ -27,6 +27,8 @@
     "*.sss": ["...", "@parcel/transformer-inline-string"],
 
 
-    "*.{ts,tsx}": ["@parcel/transformer-typescript-tsc"]
-  }
+    "*.{ts,tsx}": ["@parcel/transformer-typescript-tsc"],
+    '*.png': ['@parcel/transformer-raw']
+  },
+  "reporters":  ["...", "parcel-reporter-static-files-copy"]
 }
