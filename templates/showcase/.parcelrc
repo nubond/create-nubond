@@ -29,6 +29,5 @@
 
     "*.{ts,tsx}": ["@parcel/transformer-typescript-tsc"],
     '*.png': ['@parcel/transformer-raw']
-  },
-  "reporters":  ["...", "parcel-reporter-static-files-copy"]
+  }
 }
