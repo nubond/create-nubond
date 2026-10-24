@@ -1,3 +1,6 @@
 {
-    "keep_classnames": true
+    "keep_classnames": true,
+    "format": {
+        "comments": false
+    }
 }

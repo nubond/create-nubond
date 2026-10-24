@@ -8,7 +8,8 @@
     "emitDecoratorMetadata": true,                      /* Emit design-type metadata for decorated declarations in source files. */
 
     /* Modules */
-    "module": "commonjs",                                /* Specify what module code is generated. */
+    "module": "ESNext",                                  /* Specify what module code is generated. */
+    "moduleResolution": "bundler",                       /* What Parcel does. "node" (node10) is reported as an error by TypeScript 6 (TS5107) and removed in 7. */
     "rootDir": "./src",                                  /* Specify the root folder within your source files. */
     "paths": {
       "~*": ["./*"],
