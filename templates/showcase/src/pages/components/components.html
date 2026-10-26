@@ -260,6 +260,22 @@
                         
                         &nbsp;&nbsp;<span class="pico-color-green-700">//context-specific styleSanitizer. By default global styleSanitizer value will be used, if configured</span><br/>
                         &nbsp;&nbsp;<strong>styleSanitizer</strong>?: (style: string) => string;<br/>
+
+                        &nbsp;&nbsp;<span class="pico-color-green-700">//component-specific shadow root config. Replaces (not merges with) the global $GlobalShadowRootConfig value, if configured. Default value: { mode: 'closed' }.</span><br/>
+                        &nbsp;&nbsp;<strong>shadowRootConfig</strong>?: IShadowRootConfig;<br/>
+                        }
+                    </code>
+                    <em>IShadowRootConfig interface:</em>
+                    <code class="ps-1">
+                        interface IShadowRootConfig {<br/>
+                        &nbsp;&nbsp;<span class="pico-color-green-700">//Shadow root encapsulation mode: 'open' or 'closed'. Any other value falls back to 'closed'.</span><br/>
+                        &nbsp;&nbsp;<strong>mode</strong>: ShadowRootMode;<br/>
+
+                        &nbsp;&nbsp;<span class="pico-color-green-700">//Delegates focus to the first focusable element of the shadow root. Default value: false.</span><br/>
+                        &nbsp;&nbsp;<strong>delegatesFocus</strong>?: boolean;<br/>
+
+                        &nbsp;&nbsp;<span class="pico-color-green-700">//Makes the shadow root serializable via getHTML(). Default value: false.</span><br/>
+                        &nbsp;&nbsp;<strong>serializable</strong>?: boolean;<br/>
                         }
                     </code>
                     <em>Example:</em>
@@ -267,7 +283,8 @@
                         {<br/>
                         &nbsp;&nbsp;pessimisticChangeDetectionStrategy: true,<br/>
                         &nbsp;&nbsp;htmlSanitizer: html => html,<br/>
-                        &nbsp;&nbsp;styleSanitizer: style => style<br/>
+                        &nbsp;&nbsp;styleSanitizer: style => style,<br/>
+                        &nbsp;&nbsp;shadowRootConfig: { mode: 'open', delegatesFocus: true }<br/>
                         }
                     </code>
                     • <strong>Array&lt;string&gt;</strong>: adopted styles names<br/>

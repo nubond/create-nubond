@@ -635,3 +635,24 @@
         • <strong>routeConfig: string</strong>: route configuration<br/>
     </div>
 </article>
+
+<!--global shadow root config-->
+<article nb-template="@mono-slot-tile">
+    <span class="pico-color-green-500" nb-projection="@header">$GlobalShadowRootConfig</span>
+    <span nb-projection="@sub-header">global shadow root config</span>
+    <div nb-projection="@content">
+        Sets the default shadow root config for every component that has no component-specific <strong>shadowRootConfig</strong>.<br/>
+        It is not a part of IGlobalConfig, so it can't be passed to @AppRoot or $Config.<br/>
+        Each @Component captures the value when its decorator runs, so call it in a module that is imported before any component module (e.g. the first import of index.ts).<br/>
+        <code class="ps-1">
+            function $GlobalShadowRootConfig(shadowRootConfig: IShadowRootConfig) {<br/>}
+        </code>
+        Parameters:<br/>
+        • <strong>shadowRootConfig: IShadowRootConfig</strong>: global shadow root config (see @Component on the Components tab)<br/>
+        <em>Example:</em>
+        <code class="ps-1">
+            <span class="pico-color-green-700">//shadow-root-config.ts - imported first in index.ts</span><br/>
+            $GlobalShadowRootConfig({ mode: 'open', delegatesFocus: true });
+        </code>
+    </div>
+</article>
