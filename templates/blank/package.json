@@ -27,7 +27,7 @@
     "ainj": "node package-cli.js --init-cwd add-injectable"
   },
   "devDependencies": {
-    "@nubond/posthtml-value-interpolation": "^1.0.3",
+    "@nubond/posthtml-value-interpolation": "^1.0.4",
     "@parcel/transformer-inline-string": "^2.16.4",
     "@parcel/transformer-sass": "^2.16.4",
     "@parcel/transformer-typescript-tsc": "^2.16.4",
